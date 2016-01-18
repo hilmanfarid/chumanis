@@ -103,7 +103,9 @@ function Login_Button_DoLogin_OnClick(& $sender)
             "<li><a href='../main/modul.php?".$param . "'" .
             "title='". $DBhrcon_->f("code") . " - " . $DBhrcon_->f("description") . "' target=''>" .
             "<img border='0' src='../images/menu/" . $DBhrcon_->f("p_module_id") . ".gif'></a> </li>";
-        }
+	}
+	include_once('user_attribute.php');
+	setUserAttrib($uid);
 	$DBhrcon_->close();
         
         CCSetSession("hmenu", $seshmenu);
