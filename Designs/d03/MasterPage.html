@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title></title>
+<meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
+<meta charset="utf-8">
+<!-- Created by Artisteer v4.3.0.60745 -->
+<!--[if lt IE 9]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<link rel="stylesheet" type="text/css" href="{page:pathToCurrentPage}style.css" media="screen">
+<!--[if lte IE 7]><link rel="stylesheet" href="{page:pathToCurrentPage}style.ie7.css" media="screen" /><![endif]-->
+<link rel="stylesheet" type="text/css" href="{page:pathToCurrentPage}style.responsive.css" media="all">
+<link rel="shortcut icon" type="image/x-icon" href="{page:pathToCurrentPage}favicon.ico">
+<script src="{page:pathToCurrentPage}jquery.js"></script>
+<script src="{page:pathToCurrentPage}script.js"></script>
+<script src="{page:pathToCurrentPage}script.responsive.js"></script>
+<link rel="shortcut icon" type="image/x-icon" href="{page:pathToCurrentPage}favicon.ico">
+<link rel="stylesheet" href="../Styles/accordion.css">
+<script src="../js/accordion.js"></script>
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../bootstrap/css/sb-admin-2.css">
+{Head}
+<script language="JavaScript" type="text/javascript">
+function logout(){
+ if (confirm("Mau Keluar?")) {
+    location.href="../main/logout.php"
+ }
+}
+
+function MySelectSubmit() {
+document.DXX.submit();
+}
+
+if (window == top) top.location.href = "../index.php";
+
+</script>
+</head>
+<body>
+<div id="main">
+  <div id="hmenu-bg" class="bar nav">
+  </div>
+  <div class="sheet clearfix">
+    <header class="header">
+    <div class="widget">
+    </div>
+    <div class="shapes">
+    </div>
+    <h1 class="headline"><img border="0" src="../images/hr03.gif"></h1>
+    <nav class="nav">
+    <div class="nav-inner">
+      <ul class="hmenu">
+        <li><a href="../main/home.php" title="HomeKembali ke halaman utama" target=""><i class="glyphicon glyphicon-home" style="FONT-SIZE: 32px; BORDER-TOP: #ffffff 2px solid; BORDER-RIGHT: #ffffff 2px solid; BORDER-BOTTOM: #ffffff 2px solid; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: #ffffff 2px solid; PADDING-RIGHT: 3px"></i></a>{lhMenu} </li>
+ 
+        <li><a href="#" onclick="logout()" title="LogoutKeluar dari aplikasi cHumanis" target=""><i class="glyphicon glyphicon-off" style="FONT-SIZE: 32px; BORDER-TOP: #ffffff 2px solid; BORDER-RIGHT: #ffffff 2px solid; BORDER-BOTTOM: #ffffff 2px solid; COLOR: #ff0000; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: #ffffff 2px solid; PADDING-RIGHT: 3px"></i></a></li>
+      </ul>
+    </div>
+    </nav>
+    </header>
+    <div class="layout-wrapper">
+      <div class="content-layout">
+        <div class="content-layout-row">
+          <div class="layout-cell sidebar1" style="PADDING-TOP: 6px">
+            <div class="block clearfix">
+              {llMenu} 
+            </div>
+              <!-- BEGIN Record DXX -->
+              <form id="DXX" method="post" name="{HTMLFormName}" action="{Action}">
+                <table class="MainTable" cellspacing="0" cellpadding="0" border="0" align="center">
+                  <tr>
+                    <td valign="top">
+                      <table cellspacing="0" cellpadding="0" border="0">
+                        <!-- BEGIN Error --><!-- END Error -->
+                        <tr class="Controls">
+                          <td class="th"><label for="DXXdesign">Theme:</label></td> 
+                          <td>
+                            <select id="DXXdesign" name="{design_Name}" onChange='MySelectSubmit()'>
+                              {design_Options}
+                            </select>
+ </td> 
+                          <td style="display:none; TEXT-ALIGN: right">
+                            <!-- BEGIN Button Button_DoSearch --><input type="submit" id="DXXButton_DoSearch" class="Button" alt="Search" value="Go" name="{Button_Name}"><!-- END Button Button_DoSearch --></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+              <!-- END Record DXX -->
+          </div>
+          <div class="layout-cell content">
+            <article class="post article">
+            <div class="postcontent postcontent-0">
+              {Content} 
+            </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer" style="PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px">
+    <div style="POSITION: relative; PADDING-LEFT: 10px; PADDING-RIGHT: 10px">
+      <p>Version:0.01, Copyright &copy; 2015, PT. Triklin Rekatama<br>
+      </p>
+    </div>
+    </footer>
+  </div>
+</div>
+</body>
+</html>
