@@ -1,4 +1,5 @@
 <?php
+
 //Include Files @0-ED610940
 include(RelativePath . "/Classes.php");
 include(RelativePath . "/db_adapter.php");
@@ -21,8 +22,8 @@ $CCConnectionSettings = array (
     )
 );
 //End Connection Settings
-//print_r(decryptIt(urldecode('gyMvkVS%2FseALkJe4vHkz55UsKNOjpLI7XtcptrUw%2FZDiB29oZQ%2Bm8h2X5M%2BTOrtDSS6cnDxlotIrL2JoAapmICgsQXuEjix1n0758xxjpRm4M5fRHpOVrihocjAJGJ4L')));
-//exit;
+
+//++++++++++++++++++++++++++++++++++++++BEGIN ENCRIPT URL
 function getParamAttriEnc(){
 	$paramAttriEnc = 't';
 	return $paramAttriEnc;
@@ -50,6 +51,9 @@ function decryptIt( $q ) {
     $qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $q ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
     return( $qDecoded );
 }
+//++++++++++++++++++++++++++++++++++++++END ENCRIPT URL
+
+
 //Initialize Common Variables @0-338872F2
 $PHPVersion = explode(".",  phpversion());
 if (($PHPVersion[0] < 4) || ($PHPVersion[0] == 4  && $PHPVersion[1] < 1)) {
@@ -591,8 +595,7 @@ function CCGetQueryString($CollectionName, $RemoveParameters)
     else
         die("1050: Common Functions. CCGetQueryString Function. " .
             "The CollectionName contains an illegal value.");
-	return getParamAttriEnc()."=".encryptIt($querystring);
-    //return $querystring;
+    return $querystring;
 }
 //End CCGetQueryString
 
@@ -620,19 +623,14 @@ function CCCollectionToString($ParametersCollection, $RemoveParameters)
       if(!$Remove)
       {
         if(is_array($ItemValues))
-          /*for($J = 0; $J < sizeof($ItemValues); $J++){
-		    echo $ItemValues[$J];
+          for($J = 0; $J < sizeof($ItemValues); $J++)
             $Result .= "&" . urlencode(CCStrip($ItemName)) . "[]=" . urlencode(CCStrip($ItemValues[$J]));
-		  }*/
-		  foreach($ItemValues as $key => $ItemValue){
-			$key = is_numeric($key)? "" : $key;
-			$Result .= "&" . urlencode(CCStrip($ItemName)) . "[".$key."]=" . urlencode(CCStrip($ItemValue));
-		  }
         else
            $Result .= "&" . urlencode(CCStrip($ItemName)) . "=" . urlencode(CCStrip($ItemValues));
       }
     }
   }
+
   if(strlen($Result) > 0)
     $Result = substr($Result, 1);
   return $Result;
@@ -655,8 +653,6 @@ function CCMergeQueryStrings($LeftQueryString, $RightQueryString = "")
 //CCAddParam @0-5D96DB6B
 function CCAddParam($querystring, $ParameterName, $ParameterValue)
 {
-	$paramNoEnc = '';
-	$forbiddenToEnc = array('FormFilter');
     $queryStr = null; $paramStr = null;
     if (strpos($querystring, '?') !== false)
         list($queryStr, $paramStr) = explode('?', $querystring);
@@ -664,32 +660,17 @@ function CCAddParam($querystring, $ParameterName, $ParameterValue)
         $paramStr = $querystring;
     else
         $queryStr = $querystring;
-
-	if($paramStr != ""){
-		$paramStr = decryptIt(urldecode(str_replace(getParamAttriEnc()."=","",$paramStr)));
-	}
     $paramStr = $paramStr ? '&' . $paramStr : '';
     $paramStr = preg_replace ('/&' . $ParameterName . '(\[\])?=[^&]*/', '', $paramStr);
-	
-	if(!in_array($ParameterName, $forbiddenToEnc)){
-		if(is_array($ParameterValue)) {
-			foreach($ParameterValue as $key => $val) {
-				$paramStr .= "&" . urlencode($ParameterName) . "[]=" . urlencode($val);
-			}
-		} else {
-			$paramStr .= "&" . urlencode($ParameterName) . "=" . urlencode($ParameterValue);
-		}
-	}else{
-		$paramNoEnc .= "&" . urlencode($ParameterName) . "=" . urlencode($ParameterValue);
-	}
+    if(is_array($ParameterValue)) {
+        foreach($ParameterValue as $key => $val) {
+            $paramStr .= "&" . urlencode($ParameterName) . "[]=" . urlencode($val);
+        }
+    } else {
+        $paramStr .= "&" . urlencode($ParameterName) . "=" . urlencode($ParameterValue);
+    }
     $paramStr = ltrim($paramStr, '&');
-
-	$paramStr = getParamAttriEnc()."=".encryptIt($paramStr);
-    $return_query = $queryStr ? $queryStr . '?' . $paramStr : $paramStr;
-	return $return_query.$paramNoEnc;
-	//exit;
-	//return getParamAttriEnc()."=".encryptIt($return_query);
-	//return $return_query;
+    return $queryStr ? $queryStr . '?' . $paramStr : $paramStr;
 }
 //End CCAddParam
 
@@ -1901,13 +1882,15 @@ function CCSecurityRedirect($GroupsAccess, $URL)
             $ReturnPage .= "?" . $QueryString;
     }
     $ErrorType = CCSecurityAccessCheck($GroupsAccess);
+	echo $URL;
+	exit;
     if($ErrorType != "success")
     {
         if(!strlen($URL))
             $Link = ServerURL . "main/login.php";
         else
-            $Link = $URL;
-        header("Location: " . $Link . "?ret_link=" . urlencode($ReturnPage) . "&type=" . $ErrorType);
+		    $Link = $URL;
+            header("Location: " . $Link . "?ret_link=" . urlencode($ReturnPage) . "&type=" . $ErrorType);
         exit;
     }
 }

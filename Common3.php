@@ -1,28 +1,47 @@
 <?php
+
 //Include Files @0-ED610940
 include(RelativePath . "/Classes.php");
 include(RelativePath . "/db_adapter.php");
 //End Include Files
 
 //Connection Settings @0-B5AB9151
+/*
 $CCConnectionSettings = array (
     "hrcon" => array(
         "Type" => "PostgreSQL",
         "DBLib" => "PostgreSQL",
-        "Database" => "",
-        "Host" => "",
-        "Port" => "",
-        "User" => "",
-        "Password" => "",
+        "Database" => "ifl_db",
+        "Host" => "127.0.0.1",
+        "Port" => "5432",
+        "User" => "ifl",
+        "Password" => "ifl",
         "Persistent" => false,
         "DateFormat" => array("yyyy", "-", "mm", "-", "dd", " ", "HH", ":", "nn", ":", "ss"),
         "BooleanFormat" => array("t", "f", ""),
         "Uppercase" => false
     )
 );
+*/
+$CCConnectionSettings = array (
+    "hrcon" => array(
+        "Type" => "PostgreSQL",
+        "DBLib" => "PostgreSQL",
+        "Database" => "chumanis_db",
+        "Host" => "localhost",
+        "Port" => "5443",
+        "User" => "chumanis",
+        "Password" => "chumanis",
+        "Persistent" => false,
+        "DateFormat" => array("yyyy", "-", "mm", "-", "dd", " ", "HH", ":", "nn", ":", "ss"),
+        "BooleanFormat" => array("t", "f", ""),
+        "Uppercase" => false
+    )
+);
+
 //End Connection Settings
-//print_r(decryptIt(urldecode('gyMvkVS%2FseALkJe4vHkz55UsKNOjpLI7XtcptrUw%2FZDiB29oZQ%2Bm8h2X5M%2BTOrtDSS6cnDxlotIrL2JoAapmICgsQXuEjix1n0758xxjpRm4M5fRHpOVrihocjAJGJ4L')));
-//exit;
+
+//BEGIN ENCRIPT URL
 function getParamAttriEnc(){
 	$paramAttriEnc = 't';
 	return $paramAttriEnc;
@@ -50,6 +69,8 @@ function decryptIt( $q ) {
     $qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $q ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
     return( $qDecoded );
 }
+//END ENCRIPT URL
+
 //Initialize Common Variables @0-338872F2
 $PHPVersion = explode(".",  phpversion());
 if (($PHPVersion[0] < 4) || ($PHPVersion[0] == 4  && $PHPVersion[1] < 1)) {
@@ -141,20 +162,12 @@ class clsDBhrcon extends DB_Adapter
     function OptimizeSQL($SQL)
     {
         $PageSize = (int) $this->PageSize;
-        //if (!$PageSize) return $SQL;
+        if (!$PageSize) return $SQL;
         $Page = $this->AbsolutePage ? (int) $this->AbsolutePage : 1;
-        /*if (strcmp($this->RecordsCount, "CCS not counted")) 
+        if (strcmp($this->RecordsCount, "CCS not counted")) 
             $SQL .= (" LIMIT " . $PageSize . " OFFSET " . (($Page - 1) * $PageSize));
         else
-            $SQL .= (" LIMIT " . ($PageSize + 1) . " OFFSET " . (($Page - 1) * $PageSize));*/
-		if (strcmp($this->RecordsCount, "CCS not counted")){
-			$this->Provider->Start= (($Page - 1) * $PageSize);
-			$this->Provider->Limit= $PageSize;
-		}
-        else{
-            $this->Provider->Start= (($Page - 1) * $PageSize);
-			$this->Provider->Limit= $PageSize;
-		}
+            $SQL .= (" LIMIT " . ($PageSize + 1) . " OFFSET " . (($Page - 1) * $PageSize));
         return $SQL;
     }
 
@@ -359,11 +372,9 @@ function CCDLookUp($field_name, $table_name, $where_condition, &$db)
 //CCGetDBValue @0-6DCF4DC4
 function CCGetDBValue($sql, &$db)
 {
-  return "";
-  if($db->Provider->TotalRow == 0){
-	return "";
-  }
-  return $db->Provider->TotalRow;
+  $db->query($sql);
+  $dbvalue = $db->next_record() ? $db->f(0) : "";
+  return $dbvalue;  
 }
 //End CCGetDBValue
 
@@ -571,6 +582,34 @@ function CCGetRequestParam($ParameterName, $Method, $DefaultValue = "")
 //End CCGetRequestParam
 
 //CCGetQueryString @0-CDA71B06
+/*
+function CCGetQueryString($CollectionName, $RemoveParameters)
+{
+    $querystring = "";
+    $postdata = "";
+    if($CollectionName == "Form")
+        $querystring = CCCollectionToString($_POST, $RemoveParameters);
+    else if($CollectionName == "QueryString")
+        $querystring = CCCollectionToString($_GET, $RemoveParameters);
+    else if($CollectionName == "All")
+    {
+        $querystring = CCCollectionToString($_GET, $RemoveParameters);
+        $postdata = CCCollectionToString($_POST, $RemoveParameters);
+        if(strlen($postdata) > 0 && strlen($querystring) > 0)
+            $querystring .= "&" . $postdata;
+        else
+            $querystring .= $postdata;
+    }
+    else
+        die("1050: Common Functions. CCGetQueryString Function. " .
+            "The CollectionName contains an illegal value.");
+    return $querystring;
+}
+*/
+
+//GANTI
+//++++++++++++++++++++++++++BEGIN VERSI SEBELUMNYA
+/*
 function CCGetQueryString($CollectionName, $RemoveParameters)
 {
     $querystring = "";
@@ -594,7 +633,33 @@ function CCGetQueryString($CollectionName, $RemoveParameters)
 	return getParamAttriEnc()."=".encryptIt($querystring);
     //return $querystring;
 }
+*/
 //End CCGetQueryString
+//++++++++++++++++++++++++++++++END VERSI SEBELUMNYA
+
+function CCGetQueryString($CollectionName, $RemoveParameters)
+{
+    $querystring = "";
+    $postdata = "";
+    if($CollectionName == "Form")
+        $querystring = CCCollectionToString($_POST, $RemoveParameters);
+    else if($CollectionName == "QueryString")
+        $querystring = CCCollectionToString($_GET, $RemoveParameters);
+    else if($CollectionName == "All")
+    {
+        $querystring = CCCollectionToString($_GET, $RemoveParameters);
+        $postdata = CCCollectionToString($_POST, $RemoveParameters);
+        if(strlen($postdata) > 0 && strlen($querystring) > 0)
+            $querystring .= "&" . $postdata;
+        else
+            $querystring .= $postdata;
+    }
+    else
+        die("1050: Common Functions. CCGetQueryString Function. " .
+            "The CollectionName contains an illegal value.");
+    return $querystring;
+}
+
 
 //CCCollectionToString @0-F45EFAFC
 function CCCollectionToString($ParametersCollection, $RemoveParameters)
@@ -620,25 +685,37 @@ function CCCollectionToString($ParametersCollection, $RemoveParameters)
       if(!$Remove)
       {
         if(is_array($ItemValues))
-          /*for($J = 0; $J < sizeof($ItemValues); $J++){
-		    echo $ItemValues[$J];
+          for($J = 0; $J < sizeof($ItemValues); $J++)
             $Result .= "&" . urlencode(CCStrip($ItemName)) . "[]=" . urlencode(CCStrip($ItemValues[$J]));
-		  }*/
-		  foreach($ItemValues as $key => $ItemValue){
-			$key = is_numeric($key)? "" : $key;
-			$Result .= "&" . urlencode(CCStrip($ItemName)) . "[".$key."]=" . urlencode(CCStrip($ItemValue));
-		  }
         else
            $Result .= "&" . urlencode(CCStrip($ItemName)) . "=" . urlencode(CCStrip($ItemValues));
       }
     }
   }
+
   if(strlen($Result) > 0)
     $Result = substr($Result, 1);
   return $Result;
 }
 //End CCCollectionToString
 
+//+++++++++++++++++++++++++++++++++++++++++++BEGIN -- VERSI SEBELUMNYA
+//GANTI 
+//CCMergeQueryStrings @0-5BB2EE59
+/*
+function CCMergeQueryStrings($LeftQueryString, $RightQueryString = "")
+{
+  $QueryString = $LeftQueryString; 
+  if($QueryString === "")
+    $QueryString = $RightQueryString;
+  else if($RightQueryString !== "")
+    $QueryString .= '&' . $RightQueryString;
+  
+  return $QueryString;
+}
+*/
+//End CCMergeQueryStrings
+//+++++++++++++++++++++++++++++++++++++++++++END -- VERSI SEBELUMNYA
 //CCMergeQueryStrings @0-5BB2EE59
 function CCMergeQueryStrings($LeftQueryString, $RightQueryString = "")
 {
@@ -652,11 +729,11 @@ function CCMergeQueryStrings($LeftQueryString, $RightQueryString = "")
 }
 //End CCMergeQueryStrings
 
+
 //CCAddParam @0-5D96DB6B
+/*
 function CCAddParam($querystring, $ParameterName, $ParameterValue)
 {
-	$paramNoEnc = '';
-	$forbiddenToEnc = array('FormFilter');
     $queryStr = null; $paramStr = null;
     if (strpos($querystring, '?') !== false)
         list($queryStr, $paramStr) = explode('?', $querystring);
@@ -664,34 +741,75 @@ function CCAddParam($querystring, $ParameterName, $ParameterValue)
         $paramStr = $querystring;
     else
         $queryStr = $querystring;
+    $paramStr = $paramStr ? '&' . $paramStr : '';
+    $paramStr = preg_replace ('/&' . $ParameterName . '(\[\])?=[^&]* /', '', $paramStr);
+    if(is_array($ParameterValue)) {
+        foreach($ParameterValue as $key => $val) {
+            $paramStr .= "&" . urlencode($ParameterName) . "[]=" . urlencode($val);
+        }
+    } else {
+        $paramStr .= "&" . urlencode($ParameterName) . "=" . urlencode($ParameterValue);
+    }
+    $paramStr = ltrim($paramStr, '&');
+    return $queryStr ? $queryStr . '?' . $paramStr : $paramStr;
+}
+*/
 
-	if($paramStr != ""){
-		$paramStr = decryptIt(urldecode(str_replace(getParamAttriEnc()."=","",$paramStr)));
-	}
+//+++++++++++++++++++++++++++++++++++++++++++BEGIN -- VERSI SEBELUMNYA
+//GANTI 
+//function CCAddParam($querystring, $ParameterName, $ParameterValue)
+//{
+//	if($querystring != ""){
+//		$querystring = decryptIt(urldecode(str_replace(getParamAttriEnc()."=","",$querystring)));
+//	}
+//    $queryStr = null; $paramStr = null;
+//    if (strpos($querystring, '?') !== false)
+//        list($queryStr, $paramStr) = explode('?', $querystring);
+//    else if (strpos($querystring, '=') !== false)
+//        $paramStr = $querystring;
+//    else
+//        $queryStr = $querystring;
+//    $paramStr = $paramStr ? '&' . $paramStr : '';
+//    $paramStr = preg_replace ('/&' . $ParameterName . '(\[\])?=[^&]*/', '', $paramStr);
+//    if(is_array($ParameterValue)) {
+//        foreach($ParameterValue as $key => $val) {
+//            $paramStr .= "&" . urlencode($ParameterName) . "[]=" . urlencode($val);
+//        }
+//    } else {
+//        $paramStr .= "&" . urlencode($ParameterName) . "=" . urlencode($ParameterValue);
+//    }
+//    $paramStr = ltrim($paramStr, '&');
+//    $return_query = $queryStr ? $queryStr . '?' . $paramStr : $paramStr;
+//	return getParamAttriEnc()."=".encryptIt($return_query);
+//	//return $return_query;
+//}
+//End CCAddParam
+//+++++++++++++++++++++++++++++++++++++++++++END -- VERSI SEBELUMNYA
+
+//CCAddParam @0-5D96DB6B
+function CCAddParam($querystring, $ParameterName, $ParameterValue)
+{
+    $queryStr = null; $paramStr = null;
+    if (strpos($querystring, '?') !== false)
+        list($queryStr, $paramStr) = explode('?', $querystring);
+    else if (strpos($querystring, '=') !== false)
+        $paramStr = $querystring;
+    else
+        $queryStr = $querystring;
     $paramStr = $paramStr ? '&' . $paramStr : '';
     $paramStr = preg_replace ('/&' . $ParameterName . '(\[\])?=[^&]*/', '', $paramStr);
-	
-	if(!in_array($ParameterName, $forbiddenToEnc)){
-		if(is_array($ParameterValue)) {
-			foreach($ParameterValue as $key => $val) {
-				$paramStr .= "&" . urlencode($ParameterName) . "[]=" . urlencode($val);
-			}
-		} else {
-			$paramStr .= "&" . urlencode($ParameterName) . "=" . urlencode($ParameterValue);
-		}
-	}else{
-		$paramNoEnc .= "&" . urlencode($ParameterName) . "=" . urlencode($ParameterValue);
-	}
+    if(is_array($ParameterValue)) {
+        foreach($ParameterValue as $key => $val) {
+            $paramStr .= "&" . urlencode($ParameterName) . "[]=" . urlencode($val);
+        }
+    } else {
+        $paramStr .= "&" . urlencode($ParameterName) . "=" . urlencode($ParameterValue);
+    }
     $paramStr = ltrim($paramStr, '&');
-
-	$paramStr = getParamAttriEnc()."=".encryptIt($paramStr);
-    $return_query = $queryStr ? $queryStr . '?' . $paramStr : $paramStr;
-	return $return_query.$paramNoEnc;
-	//exit;
-	//return getParamAttriEnc()."=".encryptIt($return_query);
-	//return $return_query;
+    return $queryStr ? $queryStr . '?' . $paramStr : $paramStr;
 }
 //End CCAddParam
+
 
 //CCRemoveParam @0-8DE77C37
 function CCRemoveParam($querystring, $ParameterName)
@@ -1734,17 +1852,19 @@ function ComposeStrings($str1, $str2, $delimiter = null)
 }
 //End ComposeStrings
 
-//CCSelectProjectDesign @0-2AB65882
+//CCSelectProjectDesign @0-A79F2F2C
 function CCSelectProjectDesign() {
     global $CCProjectDesign;
     $QueryDesign = CCGetFromGet("design");
     if ($QueryDesign) {
         CCSetProjectDesign($QueryDesign);
         CCSetSession("design", $CCProjectDesign);
+        CCSetCookie("design", $CCProjectDesign, time() + 31536000);
         return;
     }
     if (CCSetProjectDesign(CCGetSession("design")))
         return;
+    CCSetProjectDesign(CCGetCookie("design"));
 }
 //End CCSelectProjectDesign
 
@@ -2103,6 +2223,7 @@ function CCLogoutUser()
     CCSetSession("UserAddr", "");
     CCSetSession("hmenu", "");
     CCSetSession("lmenu", "");
+    CCSetSession("design", "");
 }
 //End CCLogoutUser
 
