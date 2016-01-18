@@ -1,0 +1,164 @@
+
+<!-- BEGIN Panel Head -->
+<title>master</title>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
+<!-- END Panel Head -->
+<!-- BEGIN Panel Content -->
+<table class="MainTable" cellspacing="0" cellpadding="0" border="0" width="100%">
+  <tr>
+    <td valign="top">
+
+        <div class="blockheader">
+            <h3 class="t">Grid / Data List</h3>
+        </div>
+
+            <table class="Grid" cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr class="Caption">
+                <th style="WIDTH: 1px; TEXT-ALIGN: center">#</th>
+ 
+                <th scope="col">Judul1</th>
+ 
+                <th scope="col">Judul2</th>
+ 
+                <th scope="col">Judul3&nbsp;</th>
+ 
+                <th scope="col">Judul4</th>
+              </tr>
+ 
+              <tr class="Row">
+                <td style="TEXT-ALIGN: center"><img border="0" src="../images/table.gif"></td> 
+                <td>Data11&nbsp;</td> 
+                <td>Data12&nbsp;</td> 
+                <td>Data13&nbsp;</td> 
+                <td>Data14&nbsp;</td>
+              </tr>
+ 
+              <tr class="AltRow">
+                <td style="TEXT-ALIGN: center"><img border="0" src="../images/table.gif"></td> 
+                <td>Data21&nbsp;</td> 
+                <td>Data22&nbsp;</td> 
+                <td>Data23&nbsp;</td> 
+                <td>Data24&nbsp;</td>
+              </tr>
+ 
+              <tr class="Row">
+                <td style="TEXT-ALIGN: center"><img border="0" src="../images/table.gif"></td> 
+                <td>Data31&nbsp;</td> 
+                <td>Data32&nbsp;</td> 
+                <td>Data33&nbsp;</td> 
+                <td>Data34&nbsp;</td>
+              </tr>
+ 
+              <tr class="AltRow">
+                <td style="TEXT-ALIGN: center"><img border="0" src="../images/table.gif"></td> 
+                <td>Data41&nbsp;</td> 
+                <td>Data42&nbsp;</td> 
+                <td>Data43&nbsp;</td> 
+                <td>Data44&nbsp;</td>
+              </tr>
+ 
+              <tr class="Row">
+                <td style="TEXT-ALIGN: center"><img border="0" src="../images/table.gif"></td> 
+                <td>Data51&nbsp;</td> 
+                <td>Data52&nbsp;</td> 
+                <td>Data53&nbsp;</td> 
+                <td>Data54&nbsp;</td>
+              </tr>
+ 
+  <tr class="Footer">
+    <td style="text-align:center; width:1px"><a href="#"><img style="BORDER-LEFT-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-TOP-WIDTH: 0px" alt="" src="../images/button/ButtonAdd.gif"></a></td> 
+    <td colspan="4" style="text-align:center;">
+      <span class="Navigator">
+      
+      <img alt="" src="../images/button/ButtonFirstOff.gif">
+      
+      <img alt="" src="../images/button/ButtonPrevOff.gif"> 
+      &nbsp;1&nbsp;
+      
+      <img alt="" src="../images/button/ButtonNextOff.gif">
+      
+      <img alt="" src="../images/button/ButtonlastOff.gif">
+      </span>
+    </td>
+  </tr>              
+              
+            </table>
+    </td>
+  </tr>
+</table>
+            
+      <br>
+      <form id="myForm" method="post" name="myForm">
+  <table class="MainTable" cellspacing="0" cellpadding="0" border="0" width="100%">
+    <tr>
+      <td valign="top">
+
+        <div class="blockheader">
+            <h3 class="t">Form</h3>
+        </div>
+ 
+  <table class="Record" cellspacing="0" cellpadding="0" width="100%">
+    
+    <tr class="Controls">
+      <td class="th"><label for="Contentp_rolecode">Text Box</label></td> 
+      <td><input type="text" id="Contentp_rolecode" style="HEIGHT: 20px; WIDTH: 300px" maxlength="64" size="1" value="OPERATOR" name="code"></td>
+    </tr>
+ 
+    <tr class="Controls">
+      <td class="th"><label for="Contentp_roleis_active">List Box</label></td> 
+      <td>
+        <select id="Contentp_roleis_active" name="is_active">
+          <OPTION VALUE="Y">ENABLE</OPTION>
+<OPTION VALUE="N">DISABLE</OPTION>
+
+        </select>
+ </td>
+    </tr>
+
+                <tr class="Controls">
+                  <td class="th"><label for="NewRecord1TextBox2">Radio Button</label>&nbsp;</td> 
+                  <td><input type="radio" tabindex="2" id="Radio1" value="" name="Radio1">&nbsp;</td>
+                </tr>
+ 
+                <tr class="Controls">
+                  <td class="th"><label for="NewRecord1TextBox3">Check Box</label>&nbsp;</td> 
+                  <td><input type="checkbox" id="Checkbox1" value="" name="Checkbox1">&nbsp;</td>
+                </tr>
+
+ 
+    <tr class="Controls">
+      <td class="th"><label for="Contentp_roledescription">Text Area</label></td> 
+      <td><textarea id="Contentp_roledescription" style="HEIGHT: 60px; WIDTH: 500px" rows="1" cols="1" name="description">test</textarea></td>
+    </tr>
+ 
+    <tr class="Controls">
+      <td class="th"><label for="Contentp_rolecreation_date">Creation Date</label></td> 
+      <td><input type="text" id="Contentp_rolecreation_date" style="HEIGHT: 20px; WIDTH: 150px" readonly maxlength="100" size="1" value="25-Sep-2014" name="creation_date">
+      <label for="Contentp_rolecreated_by">Created By:</label> 
+      <input type="text" id="Contentp_rolecreated_by" style="HEIGHT: 20px; WIDTH: 150px" readonly maxlength="32" size="1" value="admin" name="created_by"></td>
+    </tr>
+ 
+    <tr class="Controls">
+      <td class="th"><label for="Contentp_roleupdated_date">Updated Date</label></td> 
+      <td><input type="text" id="Contentp_roleupdated_date" style="HEIGHT: 20px; WIDTH: 150px" readonly maxlength="100" size="1" value="10-Jul-2015" name="updated_date">
+      <label for="Contentp_roleupdated_by">Updated By</label>
+      <input type="text" id="Contentp_roleupdated_by" style="HEIGHT: 20px; WIDTH: 150px" readonly maxlength="32" size="1" value="admin" name="updated_by"></td>
+    </tr>
+ 
+    <tr class="Bottom">
+      <td style="TEXT-ALIGN: right" colspan="2">
+             <input type="submit" id="ContentroleFormButton_Update" class="Button" alt="Save" value="Save" name="Button_Update">
+             <input type="submit" id="ContentroleFormButton_Delete" class="Button" alt="Delete" value="Delete" name="Button_Delete">
+             <input type="submit" id="ContentroleFormButton_Cancel" class="Button" alt="Cancel" value="Cancel" name="Button_Cancel"></td>
+    </tr>
+  </table>
+    </td>
+  </tr>
+</table>
+  
+      </form>
+
+
+        <!-- END Panel Content -->
+        <!-- BEGIN Panel Sidebar1 --><!-- END Panel Sidebar1 -->
+        <!-- BEGIN Panel HeaderSidebar --><!-- END Panel HeaderSidebar -->

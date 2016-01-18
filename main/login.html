@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>Login</title>
+<meta name="GENERATOR" content="CodeCharge Studio 4.3.00.7676">
+<style>
+
+#login-box {
+        width:250px;
+        height: 140px;
+        text-align:left;
+        color: #ebebeb;
+        font: 12px Arial, Helvetica, sans-serif;
+        background: url(../images/login_form.gif) no-repeat left top;
+}
+
+#login-box img {
+        border:none;
+}
+
+.login-box-options  {
+        clear:both;
+}
+
+</style>
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-6ADB6CED
+</script>
+<script src="../ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-A87AC9EE
+</script>
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//OnLoad Event Start @-2FD76255
+    actions["OnLoad"] = function (eventType, parameters) {
+        var result = true;
+//End OnLoad Event Start
+
+//Set Focus @7-3B4C23D4
+        /* may be wrong selector */ $(window).each(function(){ this.focus(); });
+//End Set Focus
+
+//OnLoad Event End @-A5B9ECB8
+        return result;
+    };
+//End OnLoad Event End
+
+//Event Binding @1-18912803
+    $(window).ccsBind(function() {
+        this.each(function(){ actions["OnLoad"].call(this); });
+    });
+//End Event Binding
+
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+</head>
+<body style="BACKGROUND-COLOR: #e6e6e6">
+<!-- BEGIN Record Login -->
+<form id="Login" method="post" name="{HTMLFormName}" action="{Action}">
+  <div style="PADDING-TOP: 90px" align="center">
+    <div id="login-box" style="HEIGHT: 193px; WIDTH: 302px; PADDING-TOP: 115px; PADDING-LEFT: 112px">
+      <input type="text" id="Loginusername" style="BORDER-TOP: 0px; HEIGHT: 17px; BORDER-RIGHT: 0px; WIDTH: 188px; BORDER-BOTTOM: 0px; FONT-WEIGHT: normal; BORDER-LEFT: 0px; BACKGROUND-COLOR: #ffffff" maxlength="100" value="{username}" name="{username_Name}"><br>
+      <div style="PADDING-TOP: 10px">
+        <input type="password" id="Loginpassword" style="BORDER-TOP: 0px; HEIGHT: 17px; BORDER-RIGHT: 0px; WIDTH: 188px; BORDER-BOTTOM: 0px; FONT-WEIGHT: normal; BORDER-LEFT: 0px; BACKGROUND-COLOR: #ffffff" maxlength="100" value="{password}" name="{password_Name}"><br>
+        <div style="PADDING-TOP: 14px; PADDING-LEFT: 20px">
+          <!-- BEGIN Button Button_DoLogin --><input type="image" id="LoginButton_DoLogin" alt="Login" src="../images/button/ButtonLogin.gif" name="{Button_Name}"><!-- END Button Button_DoLogin -->
+        </div>
+      </div>
+    </div>
+    <div style="FONT-SIZE: 11px; FONT-WEIGHT: bold; COLOR: #ff0000">
+      <!-- BEGIN Error -->{Error} <!-- END Error -->
+    </div>
+  </div>
+</form>
+<!-- END Record Login -->
+</body>
+</html>
