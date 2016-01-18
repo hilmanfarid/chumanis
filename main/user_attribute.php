@@ -28,12 +28,5 @@
 			}
 		}
 		CCSetSession("USER_ATTR",json_encode($items_attr));
-		$attribute = json_decode(CCGetSession("USER_ATTR"));
-		echo '<pre>';
-		print_r($attribute);
-		print_r($attribute->COMPANY_CODE);
-		print_r($attribute->JOB_POSITION);
-		print_r($attribute->COMPANY_CODE[0]);
-		exit;
 	}
 ?>
