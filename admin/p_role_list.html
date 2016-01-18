@@ -1,0 +1,167 @@
+<!-- BEGIN Panel Head -->
+<meta name="GENERATOR" content="CodeCharge Studio 5.1.1.18990">
+<link rel="stylesheet" type="text/css" href="../Styles/Basic/Style_doctype.css">
+<link rel="stylesheet" type="text/css" href="../Styles/Basic/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="../Styles/custom.css">
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-262290FB
+</script>
+<script src="{page:pathToRoot}ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-A87AC9EE
+</script>
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//End CCS script
+</script>
+<link rel="stylesheet" type="text/css" href="../Styles/Universal/jquery-ui.css">
+<title>p_role</title>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
+<!-- END Panel Head -->
+<!-- BEGIN Panel Content -->
+<!-- BEGIN Record p_roleSearch -->
+<form id="Contentp_roleSearch" method="post" name="{HTMLFormName}" action="">
+  <table class="MainTable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td valign="top">
+        <table class="Header" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="HeaderLeft"><img alt="" src="../Styles/Basic/Images/Spacer.gif"></td> 
+            <td class="th"><strong>Search </strong></td> 
+            <td class="HeaderRight"><img alt="" src="../Styles/Basic/Images/Spacer.gif"></td>
+          </tr>
+        </table>
+ 
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="Contentp_roleSearchErrorBlock" class="Error">
+            <td colspan="2">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th"><label for="Contentp_roleSearchs_keyword">Code</label></td> 
+            <td><input type="text" id="Contentp_roleSearchs_keyword" value="{s_keyword}" maxlength="64" size="50" name="{s_keyword_Name}"></td>
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="2">
+              <!-- BEGIN Button Button_DoSearch --><input type="submit" id="Contentp_roleSearchButton_DoSearch" class="Button" value="Search" alt="Search" name="{Button_Name}"><!-- END Button Button_DoSearch --></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record p_roleSearch --><br>
+<!-- BEGIN Grid p_role -->
+<table class="MainTable" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="top">
+      <table class="Header" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="HeaderLeft"><img alt="" src="../Styles/Basic/Images/Spacer.gif"></td> 
+          <td class="th" align="center">Daftar Role</td> 
+          <td class="HeaderRight"><img alt="" src="../Styles/Basic/Images/Spacer.gif"></td>
+        </tr>
+      </table>
+ 
+      <table class="ContentroleGrid" cellspacing="0" cellpadding="0">
+        <tr class="Caption">
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_p_role_id --><span class="Sorter"><a href="{Sort_URL}" id="Contentp_roleSorter_p_role_id">P Role Id</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascending" src="../Styles/Basic/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descending" src="../Styles/Basic/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_p_role_id --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_code --><span class="Sorter"><a href="{Sort_URL}" id="Contentp_roleSorter_code">Code</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascending" src="../Styles/Basic/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descending" src="../Styles/Basic/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_code --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_listing_no --><span class="Sorter"><a href="{Sort_URL}" id="Contentp_roleSorter_listing_no">Listing No</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascending" src="../Styles/Basic/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descending" src="../Styles/Basic/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_listing_no --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_valid_from --><span class="Sorter"><a href="{Sort_URL}" id="Contentp_roleSorter_valid_from">Valid From</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascending" src="../Styles/Basic/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descending" src="../Styles/Basic/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_valid_from --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_valid_to --><span class="Sorter"><a href="{Sort_URL}" id="Contentp_roleSorter_valid_to">Valid To</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascending" src="../Styles/Basic/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descending" src="../Styles/Basic/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_valid_to --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_description --><span class="Sorter"><a href="{Sort_URL}" id="Contentp_roleSorter_description">Description</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascending" src="../Styles/Basic/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descending" src="../Styles/Basic/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_description --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_creation_date --><span class="Sorter"><a href="{Sort_URL}" id="Contentp_roleSorter_creation_date">Creation Date</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascending" src="../Styles/Basic/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descending" src="../Styles/Basic/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_creation_date --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_created_by --><span class="Sorter"><a href="{Sort_URL}" id="Contentp_roleSorter_created_by">Created By</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascending" src="../Styles/Basic/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descending" src="../Styles/Basic/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_created_by --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_updated_date --><span class="Sorter"><a href="{Sort_URL}" id="Contentp_roleSorter_updated_date">Updated Date</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascending" src="../Styles/Basic/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descending" src="../Styles/Basic/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_updated_date --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_updated_by --><span class="Sorter"><a href="{Sort_URL}" id="Contentp_roleSorter_updated_by">Updated By</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascending" src="../Styles/Basic/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descending" src="../Styles/Basic/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_updated_by --></th>
+        </tr>
+ 
+        <!-- BEGIN Row -->
+        <tr class="Row">
+          <td><a href="{p_role_id_Src}" id="Contentp_rolep_role_id_{p_role:rowNumber}">{p_role_id}</a>&nbsp;</td> 
+          <td>{code}&nbsp;</td> 
+          <td>{listing_no}&nbsp;</td> 
+          <td>{valid_from}&nbsp;</td> 
+          <td>{valid_to}&nbsp;</td> 
+          <td>{description}&nbsp;</td> 
+          <td>{creation_date}&nbsp;</td> 
+          <td>{created_by}&nbsp;</td> 
+          <td>{updated_date}&nbsp;</td> 
+          <td>{updated_by}&nbsp;</td>
+        </tr>
+ <!-- END Row -->
+        <!-- BEGIN NoRecords -->
+        <tr class="NoRecords">
+          <td colspan="10">No records</td>
+        </tr>
+        <!-- END NoRecords -->
+        <tr class="Footer">
+          <td colspan="10"><a href="{p_role_Insert_Src}" id="Contentp_rolep_role_Insert">Add New</a>&nbsp; 
+            <!-- BEGIN Navigator Navigator --><span class="Navigator">Records per page 
+            <select style="VERTICAL-ALIGN: middle" name="{FormName}PageSize" data-grid-size="{FormName}">
+              <option selected value="">-</option>
+ {PageSize_Options}
+            </select>
+ 
+            <!-- BEGIN First_On --><a href="{First_URL}">|&lt;</a> <!-- END First_On -->
+            <!-- BEGIN First_Off -->|&lt; <!-- END First_Off -->
+            <!-- BEGIN Prev_On --><a href="{Prev_URL}">&lt;&lt;</a> <!-- END Prev_On -->
+            <!-- BEGIN Prev_Off -->&lt;&lt; <!-- END Prev_Off -->&nbsp;{Page_Number} of&nbsp;{Total_Pages}&nbsp; 
+            <!-- BEGIN Next_On --><a href="{Next_URL}">&gt;&gt;</a> <!-- END Next_On -->
+            <!-- BEGIN Next_Off -->&gt;&gt; <!-- END Next_Off -->
+            <!-- BEGIN Last_On --><a href="{Last_URL}">&gt;|</a> <!-- END Last_On -->
+            <!-- BEGIN Last_Off -->&gt;| <!-- END Last_Off --></span><!-- END Navigator Navigator -->&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- END Grid p_role --><br>
+<!-- END Panel Content -->

@@ -1,0 +1,527 @@
+
+<!-- BEGIN Panel Head -->
+<meta name="GENERATOR" content="CodeCharge Studio 5.1.1.18990">
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-262290FB
+</script>
+<script src="{page:pathToRoot}ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-1E47B4BB
+</script>
+<link rel="stylesheet" type="text/css" href="{CCS_PathToMasterPage}jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="{CCS_PathToMasterPage}ccs-jquery-ui-calendar.css">
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//Controls Selecting @1-3620E45D
+    $('body').ccsBind(function() {
+        features["Contentp_client1creation_dateInlineDatePicker1"] = $('*:ccsControl(Content, p_client1, creation_date)');
+        features["Contentp_client1updated_dateInlineDatePicker2"] = $('*:ccsControl(Content, p_client1, updated_date)');
+        features["Contentp_company_clientcreation_dateInlineDatePicker1"] = $('*:ccsControl(Content, p_company_client, creation_date)');
+        features["Contentp_company_clientupdated_dateInlineDatePicker2"] = $('*:ccsControl(Content, p_company_client, updated_date)');
+    });
+//End Controls Selecting
+
+//Feature Parameters @1-B4864560
+    params["Contentp_client1creation_dateInlineDatePicker1"] = { 
+        dateFormat: "ShortDate",
+        isWeekend: true
+    };
+    params["Contentp_client1updated_dateInlineDatePicker2"] = { 
+        dateFormat: "ShortDate",
+        isWeekend: true
+    };
+    params["Contentp_company_clientcreation_dateInlineDatePicker1"] = { 
+        dateFormat: "ShortDate",
+        isWeekend: true
+    };
+    params["Contentp_company_clientupdated_dateInlineDatePicker2"] = { 
+        dateFormat: "ShortDate",
+        isWeekend: true
+    };
+//End Feature Parameters
+
+//Feature Init @1-4FB8438D
+    features["Contentp_client1creation_dateInlineDatePicker1"].ccsBind(function() {
+        this.ccsDateTimePicker(params["Contentp_client1creation_dateInlineDatePicker1"]);
+    });
+    features["Contentp_client1updated_dateInlineDatePicker2"].ccsBind(function() {
+        this.ccsDateTimePicker(params["Contentp_client1updated_dateInlineDatePicker2"]);
+    });
+    features["Contentp_company_clientcreation_dateInlineDatePicker1"].ccsBind(function() {
+        this.ccsDateTimePicker(params["Contentp_company_clientcreation_dateInlineDatePicker1"]);
+    });
+    features["Contentp_company_clientupdated_dateInlineDatePicker2"].ccsBind(function() {
+        this.ccsDateTimePicker(params["Contentp_company_clientupdated_dateInlineDatePicker2"]);
+    });
+//End Feature Init
+
+//Contentp_client1Hide_PanelButton_DeleteOnClick Event Start @-24EF5E24
+    actions["Contentp_client1Hide_PanelButton_DeleteOnClick"] = function (eventType, parameters) {
+        var result = true;
+//End Contentp_client1Hide_PanelButton_DeleteOnClick Event Start
+
+//Confirmation Message @14-1840CE41
+        return confirm('{res:CCS_DeleteConfirmation}');
+//End Confirmation Message
+
+//Contentp_client1Hide_PanelButton_DeleteOnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End Contentp_client1Hide_PanelButton_DeleteOnClick Event End
+
+//Contentp_client1OnSubmit Event Start @-38F17507
+    actions["Contentp_client1OnSubmit"] = function (eventType, parameters) {
+        var result = true;
+//End Contentp_client1OnSubmit Event Start
+
+//Get Data From Form @67-9053189F
+        var frmMaster = $('*:ccsControl(Content, p_client1)');
+        var frmDetail = $('*:ccsControl(Content, p_company_client)');
+        if (frmMaster.length > 0 && frmDetail.length > 0) {
+            var elements = frmDetail.serializeArray();
+            var res = {};
+            for (var i = 0; i < elements.length; i++) {
+                res[elements[i].name] = elements[i].value;
+            }
+            frmMaster.append($("<input type='hidden' name='CCSDetailControls'>").val(JSON.stringify(res)));
+        }
+//End Get Data From Form
+
+//Contentp_client1OnSubmit Event End @-A5B9ECB8
+        return result;
+    };
+//End Contentp_client1OnSubmit Event End
+
+//ContentInsertOnLoad Event Start @-5543BE7E
+    actions["ContentInsertOnLoad"] = function (eventType, parameters) {
+        var result = true;
+//End ContentInsertOnLoad Event Start
+
+//Emulate Record Button @56-3B83DDD0
+        var frmRecord = $('*:ccsControl(Content, p_client1)');
+        var btn = $('*:ccsControl(Content, Insert)');
+        if (frmRecord && btn) {
+            var action = new $.fn.Url(frmRecord.prop("action"));
+            var editMode = action.parameter("ccsForm") && action.parameter("ccsForm") == "p_client1:Edit";
+            btn.css("display", !editMode ? "inline-block" : "none");
+            btn.bind("click", function() {
+                var ctrl = $("<input type='submit' style='display:none' name='Button_Insert' value='{res:CCS_Insert}'>");
+                frmRecord.append(ctrl);
+                ctrl.click();
+            });
+        }
+//End Emulate Record Button
+
+//ContentInsertOnLoad Event End @-A5B9ECB8
+        return result;
+    };
+//End ContentInsertOnLoad Event End
+
+//ContentUpdateOnLoad Event Start @-E32917DA
+    actions["ContentUpdateOnLoad"] = function (eventType, parameters) {
+        var result = true;
+//End ContentUpdateOnLoad Event Start
+
+//Emulate Record Button @58-844B4647
+        var frmRecord = $('*:ccsControl(Content, p_client1)');
+        var btn = $('*:ccsControl(Content, Update)');
+        if (frmRecord && btn) {
+            var action = new $.fn.Url(frmRecord.prop("action"));
+            var editMode = action.parameter("ccsForm") && action.parameter("ccsForm") == "p_client1:Edit";
+            btn.css("display", editMode ? "inline-block" : "none");
+            btn.bind("click", function() {
+                var ctrl = $("<input type='submit' style='display:none' name='Button_Update' value='{res:CCS_Update}'>");
+                frmRecord.append(ctrl);
+                ctrl.click();
+            });
+        }
+//End Emulate Record Button
+
+//ContentUpdateOnLoad Event End @-A5B9ECB8
+        return result;
+    };
+//End ContentUpdateOnLoad Event End
+
+//ContentDeleteOnLoad Event Start @-6F47E31C
+    actions["ContentDeleteOnLoad"] = function (eventType, parameters) {
+        var result = true;
+//End ContentDeleteOnLoad Event Start
+
+//Emulate Record Button @60-BA7904CC
+        var frmRecord = $('*:ccsControl(Content, p_client1)');
+        var btn = $('*:ccsControl(Content, Delete)');
+        if (frmRecord && btn) {
+            var action = new $.fn.Url(frmRecord.prop("action"));
+            var editMode = action.parameter("ccsForm") && action.parameter("ccsForm") == "p_client1:Edit";
+            btn.css("display", editMode ? "inline-block" : "none");
+            btn.bind("click", function() {
+                var ctrl = $("<input type='submit' style='display:none' name='Button_Delete' value='{res:CCS_Delete}'>");
+                frmRecord.append(ctrl);
+                ctrl.click();
+            });
+        }
+//End Emulate Record Button
+
+//ContentDeleteOnLoad Event End @-A5B9ECB8
+        return result;
+    };
+//End ContentDeleteOnLoad Event End
+
+//ContentCancelOnLoad Event Start @-57C8639D
+    actions["ContentCancelOnLoad"] = function (eventType, parameters) {
+        var result = true;
+//End ContentCancelOnLoad Event Start
+
+//Emulate Record Button @62-A72F5D91
+        var frmRecord = $('*:ccsControl(Content, p_client1)');
+        var btn = $('*:ccsControl(Content, Cancel)');
+        if (frmRecord && btn) {
+            var action = new $.fn.Url(frmRecord.prop("action"));
+            var editMode = action.parameter("ccsForm") && action.parameter("ccsForm") == "p_client1:Edit";
+            btn.css("display", editMode ? "inline-block" : "none");
+            btn.bind("click", function() {
+                var ctrl = $("<input type='submit' style='display:none' name='Button_Cancel' value='{res:CCS_Cancel}'>");
+                frmRecord.append(ctrl);
+                ctrl.click();
+            });
+        }
+//End Emulate Record Button
+
+//ContentCancelOnLoad Event End @-A5B9ECB8
+        return result;
+    };
+//End ContentCancelOnLoad Event End
+
+//Event Binding @1-BE1D10B0
+    $('*:ccsControl(Content, p_client1, Hide_Panel, Button_Delete)').ccsBind(function() {
+        this.bind("click", actions["Contentp_client1Hide_PanelButton_DeleteOnClick"]);
+    });
+    $('*:ccsControl(Content, p_client1)').ccsBind(function() {
+        this.bind("submit", actions["Contentp_client1OnSubmit"]);
+    });
+    $('*:ccsControl(Content, Insert)').ccsBind(function() {
+        this.each(function(){ actions["ContentInsertOnLoad"].call(this); });
+    });
+    $('*:ccsControl(Content, Update)').ccsBind(function() {
+        this.each(function(){ actions["ContentUpdateOnLoad"].call(this); });
+    });
+    $('*:ccsControl(Content, Delete)').ccsBind(function() {
+        this.each(function(){ actions["ContentDeleteOnLoad"].call(this); });
+    });
+    $('*:ccsControl(Content, Cancel)').ccsBind(function() {
+        this.each(function(){ actions["ContentCancelOnLoad"].call(this); });
+    });
+//End Event Binding
+
+//Plugin Calls @1-C76ED166
+    $('*:ccsControl(Content, p_client1, Hide_Panel, Button_Delete)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Content, p_client1, Hide_Panel, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Content, Delete)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Content, Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+//End Plugin Calls
+
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+<title>p_client</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<!-- END Panel Head -->
+<!-- BEGIN Panel Content -->
+<!-- BEGIN Record p_clientSearch -->
+<form id="Contentp_clientSearch" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Header" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td class="HeaderLeft"><img alt="" src="{CCS_PathToMasterPage}Images/Spacer.gif"></td> 
+            <td class="th"><strong>{res:Search_Form}</strong></td> 
+            <td class="HeaderRight"><img alt="" src="{CCS_PathToMasterPage}Images/Spacer.gif"></td>
+          </tr>
+        </table>
+ 
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="{@error-block}" class="Error">
+            <td colspan="2">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th"><label for="Contentp_clientSearchs_keyword">{res:CCS_Filter}</label></td> 
+            <td><input type="text" id="Contentp_clientSearchs_keyword" maxlength="64" size="50" value="{s_keyword}" name="{s_keyword_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Contentp_clientSearchsearchConditions">{res:CCS_AdvSearchConditionsCaption}</label></td> 
+            <td>
+              <select id="Contentp_clientSearchsearchConditions" name="{searchConditions_Name}">
+                {searchConditions_Options}
+              </select>
+ </td>
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="2">
+              <!-- BEGIN Button Button_DoSearch --><input type="submit" id="Contentp_clientSearchButton_DoSearch" class="Button" alt="{res:CCS_Search}" value="{res:CCS_Search}" name="{Button_Name}"><!-- END Button Button_DoSearch --></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record p_clientSearch --><br>
+<!-- BEGIN Grid p_client2 -->
+<table id="Contentp_client2" class="MainTable" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td valign="top">
+      <table class="Header" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td class="HeaderLeft"><img alt="" src="{CCS_PathToMasterPage}Images/Spacer.gif"></td> 
+          <td class="th"><strong>{res:p_client_GridForm} </strong></td> 
+          <td class="HeaderRight"><img alt="" src="{CCS_PathToMasterPage}Images/Spacer.gif"></td>
+        </tr>
+      </table>
+ 
+      <table class="Grid table-hover" cellspacing="0" cellpadding="0">
+        <tr class="Row">
+          <td colspan="4">{res:CCS_TotalRecords}&nbsp;{p_client2_TotalRecords}</td>
+        </tr>
+ 
+        <tr class="Caption">
+          <th scope="col">{res:p_client_id}</th>
+ 
+          <th scope="col">{res:code}</th>
+ 
+          <th scope="col">{res:client_name}</th>
+ 
+          <th scope="col">{res:description}</th>
+        </tr>
+ 
+        <!-- BEGIN Row -->
+        <tr class="Row">
+          <td><a href="{p_client_id}" id="Contentp_client2p_client_id_{p_client2:rowNumber}"><img style="BORDER-LEFT-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-TOP-WIDTH: 0px" alt="{p_client_id}" src="../Images/edit_small.png"></a>&nbsp;</td> 
+          <td>{code}&nbsp;</td> 
+          <td>{client_name}&nbsp;</td> 
+          <td>{description}&nbsp;</td>
+        </tr>
+ <!-- END Row -->
+        <!-- BEGIN NoRecords -->
+        <tr class="NoRecords">
+          <td colspan="4">{res:CCS_NoRecords}</td>
+        </tr>
+        <!-- END NoRecords -->
+        <tr class="Footer">
+          <td colspan="4">
+            <!-- BEGIN Navigator Navigator --><span class="Navigator">{res:CCS_RecPerPage} 
+            <select style="VERTICAL-ALIGN: middle" name="{FormName}PageSize" data-grid-size="{FormName}">
+              <option selected value="">-</option>
+ {PageSize_Options}
+            </select>
+ 
+            <!-- BEGIN First_On --><a href="{First_URL}"><img alt="{First_URL}" src="{CCS_PathToMasterPage}Images/NavigatorFirst.png"></a> <!-- END First_On -->
+            <!-- BEGIN First_Off --><img alt="{First_URL}" src="{CCS_PathToMasterPage}Images/NavigatorFirstOff.png"><!-- END First_Off -->
+            <!-- BEGIN Prev_On --><a href="{Prev_URL}"><img alt="{Prev_URL}" src="{CCS_PathToMasterPage}Images/NavigatorPrev.png"></a> <!-- END Prev_On -->
+            <!-- BEGIN Prev_Off --><img alt="{Prev_URL}" src="{CCS_PathToMasterPage}Images/NavigatorPrevOff.png"><!-- END Prev_Off -->&nbsp;{Page_Number} {res:CCS_Of}&nbsp;{Total_Pages}&nbsp; 
+            <!-- BEGIN Next_On --><a href="{Next_URL}"><img alt="{Next_URL}" src="{CCS_PathToMasterPage}Images/NavigatorNext.png"></a> <!-- END Next_On -->
+            <!-- BEGIN Next_Off --><img alt="{Next_URL}" src="{CCS_PathToMasterPage}Images/NavigatorNextOff.png"><!-- END Next_Off -->
+            <!-- BEGIN Last_On --><a href="{Last_URL}"><img alt="{Last_URL}" src="{CCS_PathToMasterPage}Images/NavigatorLast.png"></a> <!-- END Last_On -->
+            <!-- BEGIN Last_Off --><img alt="{Last_URL}" src="{CCS_PathToMasterPage}Images/NavigatorLastOff.png"><!-- END Last_Off --></span><!-- END Navigator Navigator -->&nbsp;<a href="{ImageLink1}" id="Contentp_client2ImageLink1_{p_client2:rowNumber}"><img style="BORDER-LEFT-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-TOP-WIDTH: 0px" alt="{ImageLink1}" src="../Images/add.png"></a></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- END Grid p_client2 --><br>
+&nbsp; 
+<!-- BEGIN Record p_client1 -->
+<form id="Contentp_client1" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Header" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td class="HeaderLeft"><img alt="" src="{CCS_PathToMasterPage}Images/Spacer.gif"></td> 
+            <td class="th"><strong>{res:p_client_RecordForm}</strong></td> 
+            <td class="HeaderRight"><img alt="" src="{CCS_PathToMasterPage}Images/Spacer.gif"></td>
+          </tr>
+        </table>
+ 
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="{@error-block}" class="Error">
+            <td colspan="2">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th"><label for="Contentp_client1code">{res:code}</label></td> 
+            <td><input type="text" id="Contentp_client1code" maxlength="64" size="50" value="{code}" name="{code_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Contentp_client1client_name">{res:client_name}</label></td> 
+            <td><input type="text" id="Contentp_client1client_name" maxlength="128" size="50" value="{client_name}" name="{client_name_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Contentp_client1description">{res:description}</label></td> 
+            <td><input type="text" id="Contentp_client1description" maxlength="128" size="50" value="{description}" name="{description_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Contentp_client1creation_date">{res:creation_date}</label></td> 
+            <td><input type="text" id="Contentp_client1creation_date" maxlength="100" size="8" value="{creation_date}" name="{creation_date_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Contentp_client1created_by">{res:created_by}</label></td> 
+            <td><input type="text" id="Contentp_client1created_by" maxlength="64" size="50" value="{created_by}" name="{created_by_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Contentp_client1updated_date">{res:updated_date}</label></td> 
+            <td><input type="text" id="Contentp_client1updated_date" maxlength="100" size="8" value="{updated_date}" name="{updated_date_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Contentp_client1updated_by">{res:updated_by}</label></td> 
+            <td><input type="text" id="Contentp_client1updated_by" maxlength="64" size="50" value="{updated_by}" name="{updated_by_Name}"></td>
+          </tr>
+ 
+          <!-- BEGIN Panel Hide_Panel -->
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="2">
+              <!-- BEGIN Button Button_Insert --><input type="submit" id="Contentp_client1Hide_PanelButton_Insert" class="Button" alt="{res:CCS_Insert}" value="{res:CCS_Insert}" name="{Button_Name}"><!-- END Button Button_Insert -->
+              <!-- BEGIN Button Button_Update --><input type="submit" id="Contentp_client1Hide_PanelButton_Update" class="Button" alt="{res:CCS_Update}" value="{res:CCS_Update}" name="{Button_Name}"><!-- END Button Button_Update -->
+              <!-- BEGIN Button Button_Delete --><input type="submit" id="Contentp_client1Hide_PanelButton_Delete" class="Button" alt="{res:CCS_Delete}" value="{res:CCS_Delete}" name="{Button_Name}"><!-- END Button Button_Delete -->
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="Contentp_client1Hide_PanelButton_Cancel" class="Button" alt="{res:CCS_Cancel}" value="{res:CCS_Cancel}" name="{Button_Name}"><!-- END Button Button_Cancel --></td>
+          </tr>
+ <!-- END Panel Hide_Panel -->
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record p_client1 --><br>
+<!-- BEGIN EditableGrid p_company_client -->
+<form id="Contentp_company_client" method="post" name="{HTMLFormName}" action="{Action}">
+  <input type="hidden" value="{FormState}" name="FormState">{FormScript} 
+  <table class="MainTable" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Header" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td class="HeaderLeft"><img alt="" src="{CCS_PathToMasterPage}Images/Spacer.gif"></td> 
+            <td class="th"><strong>{res:p_company_client_EditableGridForm}</strong></td> 
+            <td class="HeaderRight"><img alt="" src="{CCS_PathToMasterPage}Images/Spacer.gif"></td>
+          </tr>
+        </table>
+ 
+        <table class="Grid table-hover" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr class="Error">
+            <td colspan="9">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Row">
+            <td colspan="9">{res:CCS_TotalRecords}&nbsp;{p_company_client_TotalRecords}</td>
+          </tr>
+ 
+          <tr class="Caption">
+            <th scope="col">{res:p_company_client_id}</th>
+ 
+            <th scope="col">{res:code}</th>
+ 
+            <th scope="col">{res:company_name}</th>
+ 
+            <th scope="col">{res:description}</th>
+ 
+            <th scope="col">{res:creation_date}</th>
+ 
+            <th scope="col">{res:created_by}</th>
+ 
+            <th scope="col">{res:updated_date}</th>
+ 
+            <th scope="col">{res:updated_by}</th>
+ 
+            <th scope="col">{res:CCS_Delete}</th>
+          </tr>
+ 
+          <!-- BEGIN Row -->
+          <!-- BEGIN RowError -->
+          <tr class="Error">
+            <td colspan="9">{Error}</td>
+          </tr>
+          <!-- END RowError -->
+          <tr class="Row">
+            <td>{p_company_client_id}</td> 
+            <td><label for="Contentp_company_clientcode_{p_company_client:rowNumber}" style="display: none;">{res:code}</label><input type="text" id="Contentp_company_clientcode_{p_company_client:rowNumber}" maxlength="64" size="50" value="{code}" name="{code_Name}"></td> 
+            <td><label for="Contentp_company_clientcompany_name_{p_company_client:rowNumber}" style="display: none;">{res:company_name}</label><input type="text" id="Contentp_company_clientcompany_name_{p_company_client:rowNumber}" maxlength="128" size="50" value="{company_name}" name="{company_name_Name}"></td> 
+            <td><label for="Contentp_company_clientdescription_{p_company_client:rowNumber}" style="display: none;">{res:description}</label><input type="text" id="Contentp_company_clientdescription_{p_company_client:rowNumber}" maxlength="128" size="50" value="{description}" name="{description_Name}"></td> 
+            <td><label for="Contentp_company_clientcreation_date_{p_company_client:rowNumber}" style="display: none;">{res:creation_date}</label><input type="text" id="Contentp_company_clientcreation_date_{p_company_client:rowNumber}" maxlength="100" size="8" value="{creation_date}" name="{creation_date_Name}"></td> 
+            <td><label for="Contentp_company_clientcreated_by_{p_company_client:rowNumber}" style="display: none;">{res:created_by}</label><input type="text" id="Contentp_company_clientcreated_by_{p_company_client:rowNumber}" maxlength="64" size="50" value="{created_by}" name="{created_by_Name}"></td> 
+            <td><label for="Contentp_company_clientupdated_date_{p_company_client:rowNumber}" style="display: none;">{res:updated_date}</label><input type="text" id="Contentp_company_clientupdated_date_{p_company_client:rowNumber}" maxlength="100" size="8" value="{updated_date}" name="{updated_date_Name}"></td> 
+            <td><label for="Contentp_company_clientupdated_by_{p_company_client:rowNumber}" style="display: none;">{res:updated_by}</label><input type="text" id="Contentp_company_clientupdated_by_{p_company_client:rowNumber}" maxlength="64" size="50" value="{updated_by}" name="{updated_by_Name}"></td> 
+            <td>
+              <!-- BEGIN Panel CheckBox_Delete_Panel --><label for="Contentp_company_clientCheckBox_Delete_PanelCheckBox_Delete_{p_company_client:rowNumber}" style="display: none;">{res:CCS_Delete}</label> 
+              <!-- BEGIN CheckBox CheckBox_Delete --><input type="checkbox" id="Contentp_company_clientCheckBox_Delete_PanelCheckBox_Delete_{p_company_client:rowNumber}" value="1" name="{CheckBox_Delete_Name}" {CheckBox_Delete}><!-- END CheckBox CheckBox_Delete --><!-- END Panel CheckBox_Delete_Panel -->&nbsp;</td>
+          </tr>
+ <!-- END Row -->
+          <!-- BEGIN NoRecords -->
+          <tr class="NoRecords">
+            <td colspan="9">{res:CCS_NoRecords}</td>
+          </tr>
+          <!-- END NoRecords -->
+          <tr class="Footer">
+            <td style="TEXT-ALIGN: right" colspan="9">
+              <!-- BEGIN Navigator Navigator --><span class="Navigator">{res:CCS_RecPerPage} 
+              <select style="VERTICAL-ALIGN: middle" name="{FormName}PageSize" data-grid-size="{FormName}">
+                <option selected value="">-</option>
+ {PageSize_Options}
+              </select>
+ 
+              <!-- BEGIN First_On --><a href="{First_URL}"><img alt="{First_URL}" src="{CCS_PathToMasterPage}Images/NavigatorFirst.png"></a> <!-- END First_On -->
+              <!-- BEGIN First_Off --><img alt="{First_URL}" src="{CCS_PathToMasterPage}Images/NavigatorFirstOff.png"><!-- END First_Off -->
+              <!-- BEGIN Prev_On --><a href="{Prev_URL}"><img alt="{Prev_URL}" src="{CCS_PathToMasterPage}Images/NavigatorPrev.png"></a> <!-- END Prev_On -->
+              <!-- BEGIN Prev_Off --><img alt="{Prev_URL}" src="{CCS_PathToMasterPage}Images/NavigatorPrevOff.png"><!-- END Prev_Off -->&nbsp;{Page_Number} {res:CCS_Of}&nbsp;{Total_Pages}&nbsp; 
+              <!-- BEGIN Next_On --><a href="{Next_URL}"><img alt="{Next_URL}" src="{CCS_PathToMasterPage}Images/NavigatorNext.png"></a> <!-- END Next_On -->
+              <!-- BEGIN Next_Off --><img alt="{Next_URL}" src="{CCS_PathToMasterPage}Images/NavigatorNextOff.png"><!-- END Next_Off -->
+              <!-- BEGIN Last_On --><a href="{Last_URL}"><img alt="{Last_URL}" src="{CCS_PathToMasterPage}Images/NavigatorLast.png"></a> <!-- END Last_On -->
+              <!-- BEGIN Last_Off --><img alt="{Last_URL}" src="{CCS_PathToMasterPage}Images/NavigatorLastOff.png"><!-- END Last_Off --></span><!-- END Navigator Navigator -->
+              <!-- BEGIN Button Button_Submit --><input type="submit" id="Contentp_company_clientButton_Submit" class="Button" alt="{res:CCS_Update}" value="{res:CCS_Update}" name="{Button_Name}"><!-- END Button Button_Submit --></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END EditableGrid p_company_client --><br>
+<!-- BEGIN Button Insert --><input type="submit" id="ContentInsert" class="Button" alt="{res:CCS_Insert}" value="{res:CCS_Insert}" name="{Button_Name}"><!-- END Button Insert -->
+<!-- BEGIN Button Update --><input type="submit" id="ContentUpdate" class="Button" alt="{res:CCS_Update}" value="{res:CCS_Update}" name="{Button_Name}"><!-- END Button Update -->
+<!-- BEGIN Button Delete --><input type="submit" id="ContentDelete" class="Button" alt="{res:CCS_Delete}" value="{res:CCS_Delete}" name="{Button_Name}"><!-- END Button Delete -->
+<!-- BEGIN Button Cancel --><input type="submit" id="ContentCancel" class="Button" alt="{res:CCS_Cancel}" value="{res:CCS_Cancel}" name="{Button_Name}"><!-- END Button Cancel --><!-- END Panel Content -->
+<!-- BEGIN Panel Menu --><!-- END Panel Menu -->
+<!-- BEGIN Panel Sidebar1 -->&nbsp;<!-- END Panel Sidebar1 -->
+<!-- BEGIN Panel HeaderSidebar -->&nbsp;<!-- END Panel HeaderSidebar -->
