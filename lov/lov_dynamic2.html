@@ -1,0 +1,107 @@
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
+<!-- BEGIN Panel Head --><!-- END Panel Head -->
+<!-- BEGIN Panel content_blank -->
+<script>
+$(document).ready(function(){
+    $('a','#ContentContentlovDynamic').click(function(e) {
+        e.preventDefault();
+        var vars =[],hash;
+        var urlString = $(this)[0].toString();
+            var hashes = urlString.split('?');
+            hashes = hashes[1];
+            hashes = hashes.split('&');
+            
+            for(var i = 0; i < hashes.length; i++)
+            {
+                hash = hashes[i].split('=');
+                $('<input>').attr({
+                            type: 'hidden',
+                            name: hash[0],
+                            value: decodeURIComponent(hash[1])
+                        }).appendTo('#ContentContentblank-form');
+            }
+            //alert(vars.toSource());
+        $('#ContentContentblank-form').attr('action',$(this)[0]);
+        $('#ContentContentblank-form').submit();
+        //do other stuff when a click happens
+    });
+});
+function selectItems(item){
+        var inputs = jQuery.parseJSON(item);
+        $.each(inputs.input, function( index, value ) {
+          //alert(inputs.item.toSource());
+          //alert(inputs.item[value]);
+          $('#'+index.toString()).val(inputs.item[value]);
+          //alert( index + ": " + value );
+          $('#myModal').modal('hide');
+        });
+}
+</script>
+<!-- BEGIN Record p_menu -->
+<form id="content_blankp_menu" method="post" name="{HTMLFormName}">
+  <table class="no-border" border="0">
+    <!-- BEGIN Error -->
+    <tr id="{@error-block}">
+      <td colspan="2">{Error}</td>
+    </tr>
+    <!-- END Error -->
+    <tr>
+      <td><label for="content_blankp_menusearchKey">Search </label></td> 
+      <td><input type="text" id="content_blankp_menusearchKey" maxlength="250" size="50" value="{searchKey}" name="{searchKey_Name}"></td>
+    </tr>
+ 
+    <tr>
+      <td style="TEXT-ALIGN: right" colspan="2">
+        <!-- BEGIN Button Button_DoSearch --><input type="submit" id="content_blankp_menuButton_DoSearch" class="Button" alt="Search" value="Search" name="{Button_Name}"><!-- END Button Button_DoSearch --></td>
+    </tr>
+  </table>
+</form>
+<!-- END Record p_menu -->
+<!-- BEGIN Grid lovDynamic -->
+<form id="ContentContentblank-form" action="">
+</form>
+<table id="ContentContentlovDynamic" class="MainTable" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td valign="top">
+      <div class="blockheader">
+        <h3 class="t">Role</h3>
+      </div>
+ 
+      <table class="Grid" cellspacing="0" cellpadding="0">
+        <tr class="Caption">
+          <th style="WIDTH: 1px; TEXT-ALIGN: center" scope="col"><button onclick="selectItems('{items_null}');return false;" id="ContentNewRecord1Button1" class=" btn btn-default" value="Clear">Clear</button><input type="hidden" id="content_blanklovDynamicitems_null_{lovDynamic:rowNumber}" value="{items_null}" name="{items_null_Name}"></th>
+          {label_lov} 
+        </tr>
+ 
+        <!-- BEGIN Row -->
+        <tr {lovDynamic:rowStyle}>
+          <td style="WIDTH: 1px; TEXT-ALIGN: center"><button onclick="selectItems('{items_return}');return false;" id="ContentNewRecord1Button1" class="fa fa-reply btn btn-default btn-circle btn-semi-circle-lg" style="FONT-SIZE: 12px; HEIGHT: 22px; WIDTH: 26px; MARGIN: 3px 5px 2px; LINE-HEIGHT: 3px"></button></td>{items_lov} 
+        </tr>
+ <!-- END Row -->
+        <!-- BEGIN NoRecords -->
+        <tr class="NoRecords">
+          <td colspan="9">-</td>
+        </tr>
+        <!-- END NoRecords -->
+        <tr class="Footer">
+          <td style="WIDTH: 1px; TEXT-ALIGN: center"></td> 
+          <td style="BORDER-LEFT-WIDTH: 0px; TEXT-ALIGN: center" colspan="8">
+            <!-- BEGIN Navigator Navigator --><span class="Navigator">
+            <!-- BEGIN First_On --><a href="{First_URL}"><img alt="{First_URL}" src="{CCS_PathToMasterPage}Images/NavigatorFirst.png"></a> <!-- END First_On -->
+            <!-- BEGIN First_Off --><img alt="{First_URL}" src="{CCS_PathToMasterPage}Images/NavigatorFirstOff.png"><!-- END First_Off -->
+            <!-- BEGIN Prev_On --><a href="{Prev_URL}"><img alt="{Prev_URL}" src="{CCS_PathToMasterPage}Images/NavigatorPrev.png"></a> <!-- END Prev_On -->
+            <!-- BEGIN Prev_Off --><img alt="{Prev_URL}" src="{CCS_PathToMasterPage}Images/NavigatorPrevOff.png"><!-- END Prev_Off -->&nbsp; 
+            <!-- BEGIN Pages -->
+            <!-- BEGIN Page_On --><a href="{Page_URL}">{Page_Number}</a>&nbsp;<!-- END Page_On -->
+            <!-- BEGIN Page_Off -->{Page_Number}&nbsp;<!-- END Page_Off --><!-- END Pages -->
+            <!-- BEGIN Next_On --><a href="{Next_URL}"><img alt="{Next_URL}" src="{CCS_PathToMasterPage}Images/NavigatorNext.png"></a> <!-- END Next_On -->
+            <!-- BEGIN Next_Off --><img alt="{Next_URL}" src="{CCS_PathToMasterPage}Images/NavigatorNextOff.png"><!-- END Next_Off -->
+            <!-- BEGIN Last_On --><a href="{Last_URL}"><img alt="{Last_URL}" src="{CCS_PathToMasterPage}Images/NavigatorLast.png"></a> <!-- END Last_On -->
+            <!-- BEGIN Last_Off --><img alt="{Last_URL}" src="{CCS_PathToMasterPage}Images/NavigatorLastOff.png"><!-- END Last_Off --></span><!-- END Navigator Navigator -->&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- END Grid lovDynamic --><!-- END Panel content_blank -->
+<!-- BEGIN Panel Content --><!-- END Panel Content -->

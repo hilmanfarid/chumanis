@@ -1,0 +1,114 @@
+
+<!-- BEGIN Panel Head -->
+<meta name="GENERATOR" content="CodeCharge Studio 5.1.1.18990">
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/sb-admin-2.css">
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../Styles/custom.css">
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-262290FB
+</script>
+<script src="{page:pathToRoot}ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-A87AC9EE
+</script>
+{page:scriptIncludes}
+<script src="../bootstrap/js/bootstrap.min.js"> </script>
+<script type="text/javascript">
+//End Include User Scripts
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//Controls Selecting @1-865D7D0C
+    $('body').ccsBind(function() {
+        features["ContentLovContainerLovAjaxPanelJUpdatePanel2"] = $('*:ccsControl(Content, LovContainer, LovAjaxPanel)');
+    });
+//End Controls Selecting
+
+//Feature Parameters @1-73141A6D
+    params["ContentLovContainerLovAjaxPanelJUpdatePanel2"] = {
+        name: "ContentLovContainerLovAjaxPanel"
+    };
+//End Feature Parameters
+
+//Feature Init @1-9A620708
+    features["ContentLovContainerLovAjaxPanelJUpdatePanel2"].ccsBind(function() {
+        this.ccsUpdatePanel(params["ContentLovContainerLovAjaxPanelJUpdatePanel2"]);
+    });
+//End Feature Init
+
+//Plugin Calls @1-A47CD710
+    $('*:ccsControl(Content, NewRecord1, Button_Delete)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+//End Plugin Calls
+    $.fn.openModal =function(){
+        var url = '../lov/lov_dynamic2.php?';
+        var param = {
+                'table' :'p_role',
+                'label' :['ID','Role Name'],
+                'items' :['p_role_id','code'],
+                'whereClause' :'',
+                'searchParam' :['p_role_id','code'],
+                'order_param' :encodeURIComponent('order by p_role_id'),
+                'input' :{
+                         'ContentNewRecord1TextBox1' : 'p_role_id',
+                     'ContentNewRecord1TextBox2' : 'code'
+                }
+        }
+        $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').html('');
+        $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').data('ccsUpdatePanel').currentUrl = url+jQuery.param(param);
+        $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').ccsUpdatePanel("refresh");
+        
+        return false;
+    }
+     $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').on('afterrefresh.ccsUpdatePanel',function(){
+        $('form','*:ccsControl(Content, LovContainer, LovAjaxPanel)').attr('action',$(this).data('ccsUpdatePanel').url);
+        $('#myModal').modal('show');
+     });
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+<title>tes_lov</title>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
+<!-- END Panel Head -->
+<!-- BEGIN Panel Content -->
+<!-- BEGIN Record NewRecord1 -->
+<form id="ContentNewRecord1" method="post" name="{HTMLFormName}" action="{Action}">
+  <h2>NewRecord1</h2>
+  <table class="MainTable">
+    <!-- BEGIN Error -->
+    <tr id="Content{@error-block}">
+      <td colspan="2">{Error}</td>
+    </tr>
+    <!-- END Error -->
+    <tr>
+      <td><label for="ContentNewRecord1TextBox1">TextBox1</label></td> 
+      <td><input type="text" id="ContentNewRecord1TextBox1" value="{TextBox1}" name="{TextBox1_Name}"><label for="ContentNewRecord1TextBox2" style="display: none;">TextBox2</label> <input type="text" id="ContentNewRecord1TextBox2" value="{TextBox2}" name="{TextBox2_Name}"><button type="button" onclick="$.fn.openModal();" id="ContentNewRecord1Button1" class="fa fa-list btn btn-default btn-circle btn-semi-circle-lg"></button></td>
+    </tr>
+ 
+    <tr>
+      <td style="TEXT-ALIGN: right" colspan="2">
+        <!-- BEGIN Button Button_Insert --><input type="submit" id="ContentNewRecord1Button_Insert" class="Button" alt="Add" value="Add" name="{Button_Name}"><!-- END Button Button_Insert -->
+        <!-- BEGIN Button Button_Update --><input type="submit" id="ContentNewRecord1Button_Update" class="Button" alt="Submit" value="Submit" name="{Button_Name}"><!-- END Button Button_Update -->
+        <!-- BEGIN Button Button_Delete --><input type="submit" id="ContentNewRecord1Button_Delete" class="Button" alt="Delete" value="Delete" name="{Button_Name}"><!-- END Button Button_Delete --></td>
+    </tr>
+  </table>
+</form>
+<!-- END Record NewRecord1 -->
+
+<!-- BEGIN Panel LovContainer -->
+<p>{modal_start}</p>
+<!-- BEGIN Panel LovAjaxPanel --><!-- END Panel LovAjaxPanel --></p>
+{modal_end}<!-- END Panel LovContainer -->
+<!-- END Panel Content -->&nbsp; 
