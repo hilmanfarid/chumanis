@@ -1,0 +1,188 @@
+
+<!-- BEGIN Panel Head -->
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-7B25F6B0
+</script>
+<script src="{page:pathToRoot}ClientI18N.php?file=Functions.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script src="{page:pathToRoot}ClientI18N.php?file=DatePicker.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script src="{page:pathToRoot}ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-F9B79976
+</script>
+<link rel="stylesheet" type="text/css" href="{CCS_PathToMasterPage}jquery-ui.css">
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//Features CSS @1-2CAB2F4D
+</script>
+<style type="text/css">
+    .ContentroleFormrole_name-autocomplete {
+        max-height: 250px;
+        width: 250px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+</style>
+<script type="text/javascript">
+//End Features CSS
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//Controls Selecting @1-1BA18714
+    $('body').ccsBind(function() {
+        features["ContentroleFormrole_nameJAutocomplete2"] = $('*:ccsControl(Content, roleForm, role_name)');
+    });
+//End Controls Selecting
+
+//Feature Parameters @1-D7E25FA0
+    params["ContentroleFormrole_nameJAutocomplete2"] = { 
+        template: '{@text_desc}',
+        value: "desc",
+        customCssClassName: "ContentroleFormrole_name-autocomplete",
+        source: "../services/admin_p_role_module_form2_roleForm_role_name_JAutocomplete1.php"
+    };
+//End Feature Parameters
+
+//Feature Init @1-CD83BDCB
+    features["ContentroleFormrole_nameJAutocomplete2"].ccsBind(function() {
+        this.ccsAutoComplete(params["ContentroleFormrole_nameJAutocomplete2"]);
+    });
+//End Feature Init
+
+//ContentroleFormButton_DeleteOnClick Event Start @-9842BBB8
+    actions["ContentroleFormButton_DeleteOnClick"] = function (eventType, parameters) {
+        var result = true;
+//End ContentroleFormButton_DeleteOnClick Event Start
+
+//Confirmation Message @8-8243B274
+        return confirm('Delete record?');
+//End Confirmation Message
+
+//ContentroleFormButton_DeleteOnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End ContentroleFormButton_DeleteOnClick Event End
+
+//Event Binding @1-09B79845
+    $('*:ccsControl(Content, roleForm, Button_Delete)').ccsBind(function() {
+        this.bind("click", actions["ContentroleFormButton_DeleteOnClick"]);
+    });
+//End Event Binding
+
+//Plugin Calls @1-9ED721CB
+    $('*:ccsControl(Content, roleForm, Button_Delete)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Content, roleForm, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    roleForm_DatePicker_valid_from1 = new Object(); 
+    roleForm_DatePicker_valid_from1.format           = "dd-mmm-yyyy";
+    roleForm_DatePicker_valid_from1.style            = "Styles/Chumanis/Style.css";
+    roleForm_DatePicker_valid_from1.relativePathPart = "../";
+    roleForm_DatePicker_valid_from1.themeVersion     = "3.0";
+    roleForm_DatePicker_valid_from1.hasMasterPage    = true;
+    roleForm_DatePicker_valid_from2 = new Object(); 
+    roleForm_DatePicker_valid_from2.format           = "dd-mmm-yyyy";
+    roleForm_DatePicker_valid_from2.style            = "Styles/Chumanis/Style.css";
+    roleForm_DatePicker_valid_from2.relativePathPart = "../";
+    roleForm_DatePicker_valid_from2.themeVersion     = "3.0";
+    roleForm_DatePicker_valid_from2.hasMasterPage    = true;
+    roleForm_DatePicker_valid_to1 = new Object(); 
+    roleForm_DatePicker_valid_to1.format           = "dd-mmm-yyyy";
+    roleForm_DatePicker_valid_to1.style            = "Styles/Chumanis/Style.css";
+    roleForm_DatePicker_valid_to1.relativePathPart = "../";
+    roleForm_DatePicker_valid_to1.themeVersion     = "3.0";
+    roleForm_DatePicker_valid_to1.hasMasterPage    = true;
+//End Plugin Calls
+        
+        $('*:ccsControl(Content, roleForm, role_name)').on('itemselect.ccsAutoComplete',function(ev,ele){
+                $('#ContentroleFormp_role_id').val(ele.item.value);
+        });
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+<title></title>
+<!-- END Panel Head -->
+<!-- BEGIN Panel Content -->&nbsp; 
+<!-- BEGIN Record roleForm -->
+<form id="ContentroleForm" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td valign="top">
+        <div class="blockheader">
+          <h3 class="t">Role&nbsp;Modul</h3>
+        </div>
+ 
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="ErrorBlock" class="Error">
+            <td colspan="2">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th">Nama Role</td> 
+            <td>
+              <!-- BEGIN TextBox role_name --><input type="text" id="ContentroleFormrole_name" class="controlrq" maxlength="64" size="32" value="{role_name}" name="{role_name_Name}"><!-- END TextBox role_name -->&nbsp;&nbsp; <input type="hidden" id="ContentroleFormp_role_module_id" value="{p_role_module_id}" name="{p_role_module_id_Name}"><label for="ContentAjaxPanelFormroleFormTextBox3" style="display: none;">&nbsp;</label><input type="hidden" id="ContentroleFormp_module_id" value="{p_module_id}" name="{p_module_id_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Tgl Berlaku</td> 
+            <td>&nbsp;<input type="text" id="ContentroleFormvalid_from" value="{valid_from}" name="{valid_from_Name}">&nbsp; 
+              <!-- BEGIN DatePicker DatePicker_valid_from2 --><a href="javascript:showDatePicker('{Name}','{FormName}','{DateControl}');" id="ContentroleFormDatePicker_valid_from2"><img id="ContentroleFormDatePicker_valid_from2_Image" border="0" alt="Show Date Picker" src="{CCS_PathToMasterPage}/Images/DatePicker.png"></a><!-- END DatePicker DatePicker_valid_from2 -->&nbsp;&nbsp; 
+              <!-- BEGIN DatePicker DatePicker_valid_from1 --><a href="javascript:showDatePicker('{Name}','{FormName}','{DateControl}');" id="ContentroleFormDatePicker_valid_from1"></a><!-- END DatePicker DatePicker_valid_from1 -->s/d&nbsp;<input type="text" id="ContentroleFormvalid_to" value="{valid_to}" name="{valid_to_Name}">&nbsp; 
+              <!-- BEGIN DatePicker DatePicker_valid_to1 --><a href="javascript:showDatePicker('{Name}','{FormName}','{DateControl}');" id="ContentroleFormDatePicker_valid_to1"><img id="ContentroleFormDatePicker_valid_to1_Image" border="0" alt="Show Date Picker" src="{CCS_PathToMasterPage}/Images/DatePicker.png"></a><!-- END DatePicker DatePicker_valid_to1 -->
+              <!-- BEGIN DatePicker DatePicker_Dialog11 --><a href="javascript:showDatePicker('{Name}','{FormName}','{DateControl}');" id="ContentAjaxPanelFormroleFormDatePicker_Dialog11"></a><!-- END DatePicker DatePicker_Dialog11 --></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Aktif ?</td> 
+            <td>
+              <select id="ContentroleFormis_active" name="{is_active_Name}">
+                {is_active_Options}
+              </select>
+ </td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Deskripsi</td> 
+            <td><textarea id="ContentroleFormdescription" rows="3" cols="60" name="{description_Name}">{description}</textarea></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Pembuat</td> 
+            <td><input type="text" id="ContentroleFormcreated_by" class="controlro" readonly maxlength="32" size="15" value="{created_by}" name="{created_by_Name}">
+              <!-- BEGIN TextBox creation_date --><input type="text" id="ContentroleFormcreation_date" class="controlro" readonly maxlength="100" size="12" value="{creation_date}" name="{creation_date_Name}"><!-- END TextBox creation_date --><label for="ContentAjaxPanelFormroleFormTextBox2" style="display: none;">&nbsp;</label></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Pengubah</td> 
+            <td><input type="text" id="ContentroleFormupdated_by" class="controlro" readonly maxlength="32" size="15" value="{updated_by}" name="{updated_by_Name}">
+              <!-- BEGIN TextBox updated_date --><input type="text" id="ContentroleFormupdated_date" class="controlro" readonly maxlength="100" size="12" value="{updated_date}" name="{updated_date_Name}"><!-- END TextBox updated_date --></td>
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="2"><input type="hidden" id="ContentroleFormp_role_id" value="{p_role_id}" name="{p_role_id_Name}">
+              <!-- BEGIN Button Button_Insert --><input type="submit" id="ContentroleFormButton_Insert" class="Button" alt="Save" value="Simpan" name="{Button_Name}"><!-- END Button Button_Insert -->
+              <!-- BEGIN Button Button_Update --><input type="submit" id="ContentroleFormButton_Update" class="Button" alt="Save" value="Simpan" name="{Button_Name}"><!-- END Button Button_Update -->
+              <!-- BEGIN Button Button_Delete --><input type="submit" id="ContentroleFormButton_Delete" class="Button" alt="Delete" value="Hapus" name="{Button_Name}"><!-- END Button Button_Delete -->
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="ContentroleFormButton_Cancel" class="Button" alt="Cancel" value="Batal" name="{Button_Name}"><!-- END Button Button_Cancel --></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record roleForm --><!-- END Panel Content -->

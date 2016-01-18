@@ -1,0 +1,130 @@
+
+<!-- BEGIN Panel Head -->
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-262290FB
+</script>
+<script src="{page:pathToRoot}ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-A87AC9EE
+</script>
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//ContentroleFormButton_DeleteOnClick Event Start @-9842BBB8
+    actions["ContentroleFormButton_DeleteOnClick"] = function (eventType, parameters) {
+        var result = true;
+//End ContentroleFormButton_DeleteOnClick Event Start
+
+//Confirmation Message @8-8243B274
+        return confirm('Delete record?');
+//End Confirmation Message
+
+//ContentroleFormButton_DeleteOnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End ContentroleFormButton_DeleteOnClick Event End
+
+//Event Binding @1-09B79845
+    $('*:ccsControl(Content, roleForm, Button_Delete)').ccsBind(function() {
+        this.bind("click", actions["ContentroleFormButton_DeleteOnClick"]);
+    });
+//End Event Binding
+
+//Plugin Calls @1-53BB1BD8
+    $('*:ccsControl(Content, roleForm, Button_Delete)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Content, roleForm, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+//End Plugin Calls
+
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+<title></title>
+<!-- END Panel Head -->
+<!-- BEGIN Panel Content -->{NewPage1} 
+<!-- BEGIN Record roleForm -->
+<form id="ContentroleForm" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td valign="top">
+        <div class="blockheader">
+          <h3 class="t">Informasi Modul</h3>
+        </div>
+ 
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="ErrorBlock" class="Error">
+            <td colspan="2"><font color="red">{Error}</font></td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th">Nama Modul</td> 
+            <td><input type="text" id="ContentroleFormcode" class="controlrq" value="{code}" maxlength="64" size="32" name="{code_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Tool Tips</td> 
+            <td><input type="text" id="ContentroleFormtooltip_text" class="controlrq" value="{tooltip_text}" maxlength="64" size="32" name="{tooltip_text_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Nomor Urut</td> 
+            <td><input type="text" id="ContentroleFormlisting_no" class="controlrq" value="{listing_no}" maxlength="12" size="6" name="{listing_no_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Aktif ?</td> 
+            <td>
+              <select id="ContentroleFormis_active" name="{is_active_Name}">
+                {is_active_Options}
+              </select>
+ </td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Keterangan</td> 
+            <td><textarea id="ContentroleFormdescription" rows="3" cols="60" name="{description_Name}">{description}</textarea></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Pembuat</td> 
+            <td><input type="text" id="ContentroleFormcreated_by" class="controlro" value="{created_by}" readonly maxlength="32" size="15" name="{created_by_Name}">
+              <!-- BEGIN TextBox creation_date --><input type="text" id="ContentroleFormcreation_date" class="controlro" value="{creation_date}" readonly maxlength="100" size="12" name="{creation_date_Name}"><!-- END TextBox creation_date --></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Pengubah</td> 
+            <td><input type="text" id="ContentroleFormupdated_by" class="controlro" value="{updated_by}" readonly maxlength="32" size="15" name="{updated_by_Name}">
+              <!-- BEGIN TextBox updated_date --><input type="text" id="ContentroleFormupdated_date" class="controlro" value="{updated_date}" readonly maxlength="100" size="12" name="{updated_date_Name}"><!-- END TextBox updated_date --></td>
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="2"><input type="hidden" id="ContentroleFormp_module_id" value="{p_module_id}" name="{p_module_id_Name}">
+              <!-- BEGIN Button Button_Insert --><input type="submit" id="ContentroleFormButton_Insert" class="Button" value="Save" alt="Save" name="{Button_Name}"><!-- END Button Button_Insert -->
+              <!-- BEGIN Button Button_Update --><input type="submit" id="ContentroleFormButton_Update" class="Button" value="Save" alt="Save" name="{Button_Name}"><!-- END Button Button_Update -->
+              <!-- BEGIN Button Button_Delete --><input type="submit" id="ContentroleFormButton_Delete" class="Button" value="Delete" alt="Delete" name="{Button_Name}"><!-- END Button Button_Delete -->
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="ContentroleFormButton_Cancel" class="Button" value="Cancel" alt="Cancel" name="{Button_Name}"><!-- END Button Button_Cancel --></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record roleForm --><!-- END Panel Content -->

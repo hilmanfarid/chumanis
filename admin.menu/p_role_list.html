@@ -1,0 +1,92 @@
+
+<!-- BEGIN Panel Head -->
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/sb-admin-2.css">
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../Styles/custom.css">
+<title>NewPage1</title>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
+<!-- END Panel Head -->
+<!-- BEGIN Panel Content -->{NewPage1} 
+<!-- BEGIN Record p_module1 -->
+<form id="Contentp_module1" method="post" name="{HTMLFormName}" action="{Action}">
+  <table style="WIDTH: 300px" class="MainTable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td align="center" v>
+        <table style="WIDTH: 354px" class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="Content{@error-block}" class="Error">
+            <td colspan="3">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th"><label for="Contentp_module1s_keyword">Keyword</label></td> 
+            <td><input type="text" style="WIDTH: 229px" id="Contentp_module1s_keyword" value="{s_keyword}" maxlength="12" size="1" name="{s_keyword_Name}"></td> 
+            <td>
+              <!-- BEGIN Button Button_DoSearch --><input type="submit" id="Contentp_module1Button_DoSearch" class="Button" value="Search" alt="Search" name="{Button_Name}"><!-- END Button Button_DoSearch --><input type="hidden" style="WIDTH: 229px" id="Contentp_module1idmenulabel" value="{idmenulabel}" maxlength="12" size="1" name="{idmenulabel_Name}"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record p_module1 --><br>
+<!-- BEGIN Grid roleGrid -->
+<table id="ContentroleGrid" class="MainTable" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="top">
+      <div class="blockheader">
+        <h3 class="t">Daftar Role</h3>
+      </div>
+ 
+      <table class="Grid" cellspacing="0" cellpadding="0">
+        <tr class="Caption">
+          <th style="TEXT-ALIGN: center; WIDTH: 1px" scope="col">#</th>
+ 
+          <th scope="col">Kode Role</th>
+ 
+          <th scope="col">No.Urut</th>
+ 
+          <th scope="col">Awal Berlaku</th>
+ 
+          <th scope="col">Akhir Berlaku</th>
+ 
+          <th scope="col">Keterangan</th>
+        </tr>
+ 
+        <!-- BEGIN Row -->
+        <tr {rolegrid:rowstyle}>
+          <td style="TEXT-ALIGN: center; WIDTH: 1px"><a href="{editlink}" id="ContentroleGrideditlink_{roleGrid:rowNumber}"><i class="fa fa-edit bigger-160" title="Edit">&nbsp;</i></a></td> 
+          <td>{code}</td> 
+          <td>{listing_no}</td> 
+          <td>{valid_from}</td> 
+          <td>{valid_to}</td> 
+          <td>{description}</td>
+        </tr>
+ <!-- END Row -->
+        <!-- BEGIN NoRecords -->
+        <tr class="NoRecords">
+          <td colspan="6">-</td>
+        </tr>
+        <!-- END NoRecords -->
+        <tr class="Footer">
+          <td style="TEXT-ALIGN: center; WIDTH: 1px"><a href="{addlink}" id="ContentroleGridaddlink_{roleGrid:rowNumber}"><img style="BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px" alt="{addlink}" src="../images/AddNew.gif"></a></td> 
+          <td style="TEXT-ALIGN: center; BORDER-LEFT-WIDTH: 0px" colspan="5">
+            <!-- BEGIN Navigator Navigator --><span class="Navigator">
+            <!-- BEGIN First_On --><a href="{First_URL}"><img alt="{First_URL}" src="{CCS_PathToMasterPage}Images/NavigatorFirst.png"></a> <!-- END First_On -->
+            <!-- BEGIN First_Off --><img alt="{First_URL}" src="{CCS_PathToMasterPage}Images/NavigatorFirstOff.png"><!-- END First_Off -->
+            <!-- BEGIN Prev_On --><a href="{Prev_URL}"><img alt="{Prev_URL}" src="{CCS_PathToMasterPage}Images/NavigatorPrev.png"></a> <!-- END Prev_On -->
+            <!-- BEGIN Prev_Off --><img alt="{Prev_URL}" src="{CCS_PathToMasterPage}Images/NavigatorPrevOff.png"><!-- END Prev_Off -->&nbsp; 
+            <!-- BEGIN Pages -->
+            <!-- BEGIN Page_On --><a href="{Page_URL}">{Page_Number}</a>&nbsp;<!-- END Page_On -->
+            <!-- BEGIN Page_Off -->{Page_Number}&nbsp;<!-- END Page_Off --><!-- END Pages -->
+            <!-- BEGIN Next_On --><a href="{Next_URL}"><img alt="{Next_URL}" src="{CCS_PathToMasterPage}Images/NavigatorNext.png"></a> <!-- END Next_On -->
+            <!-- BEGIN Next_Off --><img alt="{Next_URL}" src="{CCS_PathToMasterPage}Images/NavigatorNextOff.png"><!-- END Next_Off -->
+            <!-- BEGIN Last_On --><a href="{Last_URL}"><img alt="{Last_URL}" src="{CCS_PathToMasterPage}Images/NavigatorLast.png"></a> <!-- END Last_On -->
+            <!-- BEGIN Last_Off --><img alt="{Last_URL}" src="{CCS_PathToMasterPage}Images/NavigatorLastOff.png"><!-- END Last_Off --></span><!-- END Navigator Navigator -->&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- END Grid roleGrid -->&nbsp;&nbsp;<!-- END Panel Content -->

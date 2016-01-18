@@ -1,0 +1,218 @@
+
+<!-- BEGIN Panel Head -->
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-7B25F6B0
+</script>
+<script src="{page:pathToRoot}ClientI18N.php?file=Functions.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script src="{page:pathToRoot}ClientI18N.php?file=DatePicker.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script src="{page:pathToRoot}ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-A87AC9EE
+</script>
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+</script>
+<script src="../bootstrap/js/bootstrap.min.js"> </script>
+<script type="text/javascript">
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//Controls Selecting @1-0258E8DC
+    $('body').ccsBind(function() {
+        features["ContentLovContainerLovAjaxPanelJUpdatePanel1"] = $('*:ccsControl(Content, LovContainer, LovAjaxPanel)');
+    });
+//End Controls Selecting
+
+//Feature Parameters @1-4CDF64F8
+    params["ContentLovContainerLovAjaxPanelJUpdatePanel1"] = {
+        name: "ContentLovContainerLovAjaxPanel"
+    };
+//End Feature Parameters
+
+//Feature Init @1-14A52C7D
+    features["ContentLovContainerLovAjaxPanelJUpdatePanel1"].ccsBind(function() {
+        this.ccsUpdatePanel(params["ContentLovContainerLovAjaxPanelJUpdatePanel1"]);
+    });
+//End Feature Init
+
+//ContentroleFormButton_DeleteOnClick Event Start @-9842BBB8
+    actions["ContentroleFormButton_DeleteOnClick"] = function (eventType, parameters) {
+        var result = true;
+//End ContentroleFormButton_DeleteOnClick Event Start
+
+//Confirmation Message @8-8243B274
+        return confirm('Delete record?');
+//End Confirmation Message
+
+//ContentroleFormButton_DeleteOnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End ContentroleFormButton_DeleteOnClick Event End
+
+//Event Binding @1-09B79845
+    $('*:ccsControl(Content, roleForm, Button_Delete)').ccsBind(function() {
+        this.bind("click", actions["ContentroleFormButton_DeleteOnClick"]);
+    });
+//End Event Binding
+
+//Plugin Calls @1-0CC7FF49
+    $('*:ccsControl(Content, roleForm, Button_Delete)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Content, roleForm, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    roleForm_DatePicker_expired_user_date1 = new Object(); 
+    roleForm_DatePicker_expired_user_date1.format           = "dd-mmm-yyyy";
+    roleForm_DatePicker_expired_user_date1.style            = "Styles/Chumanis/Style.css";
+    roleForm_DatePicker_expired_user_date1.relativePathPart = "../";
+    roleForm_DatePicker_expired_user_date1.themeVersion     = "3.0";
+    roleForm_DatePicker_expired_user_date1.hasMasterPage    = true;
+    roleForm_DatePicker_expired_pwd_date1 = new Object(); 
+    roleForm_DatePicker_expired_pwd_date1.format           = "dd-mmm-yyyy";
+    roleForm_DatePicker_expired_pwd_date1.style            = "Styles/Chumanis/Style.css";
+    roleForm_DatePicker_expired_pwd_date1.relativePathPart = "../";
+    roleForm_DatePicker_expired_pwd_date1.themeVersion     = "3.0";
+    roleForm_DatePicker_expired_pwd_date1.hasMasterPage    = true;
+//End Plugin Calls
+	
+	$.fn.openModal =function(){
+        var url = '../lov/lov_dynamic2.php?';
+        var param = {
+                'table' :'p_company_client',
+                'label' :['ID','Nama Perusahaan'],
+                'items' :['p_company_client_id','company_name'],
+                'whereClause' :'',
+                'searchParam' :"",
+                'order_param' :encodeURIComponent('order by p_company_client_id'),
+                'input' :{
+                         'ContentroleFormp_company_client_id' : 'p_company_client_id',
+                     'ContentroleFormcompany_name' : 'company_name'
+                }
+        }
+        $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').html('');
+        $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').data('ccsUpdatePanel').currentUrl = url+jQuery.param(param);
+        $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').ccsUpdatePanel("refresh");
+        
+        return false;
+    }
+     $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').on('afterrefresh.ccsUpdatePanel',function(){
+        $('form','*:ccsControl(Content, LovContainer, LovAjaxPanel)').attr('action',$(this).data('ccsUpdatePanel').url);
+        $('#myModal').modal('show');
+     });
+     
+//Common Script End @1-562554DE
+});
+//End Common Script End
+	
+//End CCS script
+</script>
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/sb-admin-2.css">
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../Styles/custom.css">
+<title></title>
+<!-- END Panel Head -->
+<!-- BEGIN Panel Content -->
+<!-- BEGIN Record roleForm -->
+<form id="ContentroleForm" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" style="HEIGHT: 370px; WIDTH: 850px" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td valign="top">
+        <div class="blockheader">
+          <h3 class="t">User Form</h3>
+ 
+        </div>
+ 
+        <table class="Record" style="HEIGHT: 320px; WIDTH: 850px" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="ErrorBlock" class="Error">
+            <td colspan="4">{Error}</td> 
+          </tr>
+ <!-- END Error -->
+          <tr class="Controls">
+            <td class="th">Nama User</td> 
+            <td><input type="text" id="ContentroleFormuser_name" class="controlrq" maxlength="64" size="32" value="{user_name}" name="{user_name_Name}"></td> 
+            <td>IP Address V4</td> 
+            <td><input type="text" id="ContentroleFormip_address_4" maxlength="64" size="32" value="{ip_address_4}" name="{ip_address_4_Name}"></td> 
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Nama Lengkap User</td> 
+            <td><input type="text" id="ContentroleFormfull_name" class="controlrq" maxlength="64" size="32" value="{full_name}" name="{full_name_Name}"></td> 
+            <td>IP Address V6</td> 
+            <td><input type="text" id="ContentroleFormip_address_6" maxlength="64" size="32" value="{ip_address_6}" name="{ip_address_6_Name}"></td> 
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Status User</td> 
+            <td>
+              <select id="ContentroleFormuser_status_id" name="{user_status_id_Name}">
+                {user_status_id_Options} 
+              </select>
+ </td> 
+            <td>Terakhir Login</td> 
+            <td>
+              <!-- BEGIN TextBox last_login_time --><input type="text" id="ContentroleFormlast_login_time" class="controlro" readonly maxlength="100" size="12" value="{last_login_time}" name="{last_login_time_Name}"><!-- END TextBox last_login_time --></td> 
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Email</td> 
+            <td><input type="text" id="ContentroleFormemail_address" maxlength="64" size="32" value="{email_address}" name="{email_address_Name}"></td> 
+            <td>Kadaluarsa User</td> 
+            <td><input type="text" id="ContentroleFormexpired_user_date" maxlength="64" size="12" value="{expired_user_date}" name="{expired_user_date_Name}">
+              <!-- BEGIN DatePicker DatePicker_expired_user_date1 --><a href="javascript:showDatePicker('{Name}','{FormName}','{DateControl}');" id="ContentroleFormDatePicker_expired_user_date1"><img id="ContentroleFormDatePicker_expired_user_date1_Image" border="0" alt="Show Date Picker" src="{CCS_PathToMasterPage}/Images/DatePicker.png"></a><!-- END DatePicker DatePicker_expired_user_date1 --></td> 
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Nama Perusahaan</td> 
+            <td><input type="text" id="ContentroleFormcompany_name" maxlength="64" size="32" value="{company_name}" name="{company_name_Name}"><button type="button" onclick="$.fn.openModal();" id="ContentNewRecord1Button1" class="fa fa-list btn btn-default btn-circle btn-semi-circle-lg"></button><input type="hidden" name="{p_company_client_id_Name}" value="{p_company_client_id}" id="ContentroleFormp_company_client_id"></td> 
+            <td>Kadaluarsa Password</td> 
+            <td><input type="text" id="ContentroleFormexpired_pwd_date" maxlength="64" size="12" value="{expired_pwd_date}" name="{expired_pwd_date_Name}">
+              <!-- BEGIN DatePicker DatePicker_expired_pwd_date1 --><a href="javascript:showDatePicker('{Name}','{FormName}','{DateControl}');" id="ContentroleFormDatePicker_expired_pwd_date1"><img id="ContentroleFormDatePicker_expired_pwd_date1_Image" border="0" alt="Show Date Picker" src="{CCS_PathToMasterPage}/Images/DatePicker.png"></a><!-- END DatePicker DatePicker_expired_pwd_date1 --></td> 
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Pembuat</td> 
+            <td><input type="text" id="ContentroleFormcreated_by" class="controlro" readonly maxlength="32" size="15" value="{created_by}" name="{created_by_Name}">
+              <!-- BEGIN TextBox creation_date --><input type="text" id="ContentroleFormcreation_date" class="controlro" readonly maxlength="100" size="12" value="{creation_date}" name="{creation_date_Name}"><!-- END TextBox creation_date --></td> 
+            <td>&nbsp;</td> 
+            <td>&nbsp;</td> 
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Pengubah</td> 
+            <td><input type="text" id="ContentroleFormupdated_by" class="controlro" readonly maxlength="32" size="15" value="{updated_by}" name="{updated_by_Name}">
+              <!-- BEGIN TextBox updated_date --><input type="text" id="ContentroleFormupdated_date" class="controlro" readonly maxlength="100" size="12" value="{updated_date}" name="{updated_date_Name}"><!-- END TextBox updated_date --></td> 
+            <td>&nbsp;</td> 
+            <td>&nbsp;</td> 
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="4"><input type="hidden" id="ContentroleFormp_user_id" value="{p_user_id}" name="{p_user_id_Name}">
+              <!-- BEGIN Button Button_Insert --><input type="submit" id="ContentroleFormButton_Insert" class="Button" alt="Save" value="Simpan" name="{Button_Name}"><!-- END Button Button_Insert -->
+              <!-- BEGIN Button Button_Update --><input type="submit" id="ContentroleFormButton_Update" class="Button" alt="Save" value="Simpan" name="{Button_Name}"><!-- END Button Button_Update -->
+              <!-- BEGIN Button Button_Delete --><input type="submit" id="ContentroleFormButton_Delete" class="Button" alt="Delete" value="Hapus" name="{Button_Name}"><!-- END Button Button_Delete -->
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="ContentroleFormButton_Cancel" class="Button" alt="Cancel" value="Batal" name="{Button_Name}"><!-- END Button Button_Cancel --></td> 
+          </tr>
+ 
+        </table>
+ </td> 
+    </tr>
+ 
+  </table>
+</form>
+<!-- END Record roleForm -->&nbsp; 
+<!-- BEGIN Panel LovContainer -->
+<p>{modal_start}</p>
+<!-- BEGIN Panel LovAjaxPanel --><!-- END Panel LovAjaxPanel -->
+<p></p>
+{modal_end}<!-- END Panel LovContainer --><!-- END Panel Content -->

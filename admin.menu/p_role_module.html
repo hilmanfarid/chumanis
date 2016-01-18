@@ -1,0 +1,152 @@
+
+<!-- BEGIN Panel Head -->
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/sb-admin-2.css">
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../Styles/custom.css">
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-262290FB
+</script>
+<script src="{page:pathToRoot}ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-B0485CEC
+</script>
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//Controls Selecting @1-A5D5E29F
+    $('body').ccsBind(function() {
+        features["ContentPanel1JTabView1"] = $('*:ccsControl(Content, Panel1)');
+    });
+//End Controls Selecting
+
+//Feature Parameters @1-7252FB3A
+    params["ContentPanel1JTabView1"] = { 
+        tabs: [
+        ]
+    };
+//End Feature Parameters
+
+//Feature Init @1-A386F305
+    features["ContentPanel1JTabView1"].ccsBind(function() {
+        this.ccsTabs(params["ContentPanel1JTabView1"]);
+    });
+//End Feature Init
+
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+<link rel="stylesheet" type="text/css" href="../Styles/Universal/jquery-ui.css">
+<title>NewPage1</title>
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
+<!-- END Panel Head -->
+<!-- BEGIN Panel Content -->{NewPage1} <br>
+<!-- BEGIN Panel Panel1 -->
+<div class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+  <!-- Nav tabs -->
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+    <li class="ui-state-default ui-corner-top" role="presentation"><a href="{Link1_Src}" id="ContentPanel1Link1">Modul</a> </li>
+ 
+    <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="presentation"><a href="javascript:void(0)" role="tab" aria-controls="tes" data-toggle="tab">Role Modul</a> </li>
+  </ul>
+</div>
+&nbsp; 
+<!-- BEGIN Record p_module1 -->
+<form id="ContentPanel1p_module1" method="post" name="{HTMLFormName}" action="{Action}">
+  <table style="WIDTH: 300px" class="MainTable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td align="center" v>
+        <table style="WIDTH: 354px" class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="Content{@error-block}" class="Error">
+            <td colspan="3">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th"><label for="ContentPanel1p_module1s_keyword">Keyword</label></td> 
+            <td><input type="text" style="WIDTH: 229px" id="ContentPanel1p_module1s_keyword" value="{s_keyword}" maxlength="12" size="1" name="{s_keyword_Name}"></td> 
+            <td>
+              <!-- BEGIN Button Button_DoSearch --><input type="submit" id="ContentPanel1p_module1Button_DoSearch" class="Button" value="Search" alt="Search" name="{Button_Name}"><!-- END Button Button_DoSearch --><input type="hidden" style="WIDTH: 229px" id="ContentPanel1p_module1idmenulabel" value="{idmenulabel}" maxlength="12" size="1" name="{idmenulabel_Name}"><input type="text" style="WIDTH: 229px" id="ContentPanel1p_module1p_module_id" value="{p_module_id}" maxlength="12" size="1" name="{p_module_id_Name}"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record p_module1 --><br>
+<!-- BEGIN Grid roleGrid -->
+<table id="ContentPanel1roleGrid" class="MainTable" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="top">
+      <div class="blockheader">
+        <h3 class="t">Role</h3>
+      </div>
+ 
+      <table class="Grid" cellspacing="0" cellpadding="0">
+        <tr class="Caption">
+          <th style="TEXT-ALIGN: center; WIDTH: 1px" rowspan="2" scope="col">&nbsp;#</th>
+ 
+          <th rowspan="2" scope="col">&nbsp;Nama Role</th>
+ 
+          <th rowspan="2" scope="col">&nbsp;Nama Modul</th>
+ 
+          <th colspan="6" scope="col" align="middle">&nbsp;Tanggal Berlaku</th>
+        </tr>
+ 
+        <tr class="Caption">
+          <th colspan="5" scope="col">Dari</th>
+ 
+          <th scope="col">Sampai</th>
+        </tr>
+ 
+        <!-- BEGIN Row -->
+        <tr {roleGrid:rowStyle}>
+          <td style="TEXT-ALIGN: center; WIDTH: 1px"><a href="{editlink}" id="ContentPanel1roleGrideditlink_{roleGrid:rowNumber}" data-do-not-refresh="true">&nbsp;</a> </td> 
+          <td>{role_name}</td> 
+          <td>{code}</td> 
+          <td colspan="2">{valid_from}</td> 
+          <td colspan="4">{valid_to}</td>
+        </tr>
+ <!-- END Row -->
+        <!-- BEGIN NoRecords -->
+        <tr class="NoRecords">
+          <td colspan="9">-</td>
+        </tr>
+        <!-- END NoRecords -->
+        <tr class="Footer">
+          <td style="TEXT-ALIGN: center; WIDTH: 1px">
+            <p><a href="{addlink}" id="ContentPanel1roleGridaddlink_{roleGrid:rowNumber}" data-do-not-refresh="true"><img style="BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px" alt="{addlink}" src="../images/AddNew.gif"></a><input type="hidden" id="ContentPanel1roleGridp_module_id_{roleGrid:rowNumber}" value="{p_module_id}" name="{p_module_id_Name}"></p>
+          </td> 
+          <td style="TEXT-ALIGN: center; BORDER-LEFT-WIDTH: 0px" colspan="8">
+            <!-- BEGIN Navigator Navigator --><span class="Navigator">
+            <!-- BEGIN First_On --><a href="{First_URL}"><img alt="{First_URL}" src="{CCS_PathToMasterPage}Images/NavigatorFirst.png"></a> <!-- END First_On -->
+            <!-- BEGIN First_Off --><img alt="{First_URL}" src="{CCS_PathToMasterPage}Images/NavigatorFirstOff.png"><!-- END First_Off -->
+            <!-- BEGIN Prev_On --><a href="{Prev_URL}"><img alt="{Prev_URL}" src="{CCS_PathToMasterPage}Images/NavigatorPrev.png"></a> <!-- END Prev_On -->
+            <!-- BEGIN Prev_Off --><img alt="{Prev_URL}" src="{CCS_PathToMasterPage}Images/NavigatorPrevOff.png"><!-- END Prev_Off -->&nbsp; 
+            <!-- BEGIN Pages -->
+            <!-- BEGIN Page_On --><a href="{Page_URL}">{Page_Number}</a>&nbsp;<!-- END Page_On -->
+            <!-- BEGIN Page_Off -->{Page_Number}&nbsp;<!-- END Page_Off --><!-- END Pages -->
+            <!-- BEGIN Next_On --><a href="{Next_URL}"><img alt="{Next_URL}" src="{CCS_PathToMasterPage}Images/NavigatorNext.png"></a> <!-- END Next_On -->
+            <!-- BEGIN Next_Off --><img alt="{Next_URL}" src="{CCS_PathToMasterPage}Images/NavigatorNextOff.png"><!-- END Next_Off -->
+            <!-- BEGIN Last_On --><a href="{Last_URL}"><img alt="{Last_URL}" src="{CCS_PathToMasterPage}Images/NavigatorLast.png"></a> <!-- END Last_On -->
+            <!-- BEGIN Last_Off --><img alt="{Last_URL}" src="{CCS_PathToMasterPage}Images/NavigatorLastOff.png"><!-- END Last_Off --></span><!-- END Navigator Navigator -->&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- END Grid roleGrid --><!-- END Panel Panel1 -->&nbsp;<!-- END Panel Content -->

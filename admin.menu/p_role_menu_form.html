@@ -1,0 +1,204 @@
+
+<!-- BEGIN Panel Head -->
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/sb-admin-2.css">
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../Styles/custom.css">
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-7B25F6B0
+</script>
+<script src="{page:pathToRoot}ClientI18N.php?file=Functions.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script src="{page:pathToRoot}ClientI18N.php?file=DatePicker.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script src="{page:pathToRoot}ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-A87AC9EE
+</script>
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+</script>
+<script src="../bootstrap/js/bootstrap.min.js"> </script>
+<script>
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//Controls Selecting @1-0258E8DC
+    $('body').ccsBind(function() {
+        features["ContentLovContainerLovAjaxPanelJUpdatePanel1"] = $('*:ccsControl(Content, LovContainer, LovAjaxPanel)');
+    });
+//End Controls Selecting
+
+//Feature Parameters @1-4CDF64F8
+    params["ContentLovContainerLovAjaxPanelJUpdatePanel1"] = {
+        name: "ContentLovContainerLovAjaxPanel"
+    };
+//End Feature Parameters
+
+//Feature Init @1-14A52C7D
+    features["ContentLovContainerLovAjaxPanelJUpdatePanel1"].ccsBind(function() {
+        this.ccsUpdatePanel(params["ContentLovContainerLovAjaxPanelJUpdatePanel1"]);
+    });
+//End Feature Init
+
+//ContentroleMenuFormButton_DeleteOnClick Event Start @-0FC4D713
+    actions["ContentroleMenuFormButton_DeleteOnClick"] = function (eventType, parameters) {
+        var result = true;
+//End ContentroleMenuFormButton_DeleteOnClick Event Start
+
+//Confirmation Message @8-8243B274
+        return confirm('Delete record?');
+//End Confirmation Message
+
+//ContentroleMenuFormButton_DeleteOnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End ContentroleMenuFormButton_DeleteOnClick Event End
+
+//Event Binding @1-1B2FD930
+    $('*:ccsControl(Content, roleMenuForm, Button_Delete)').ccsBind(function() {
+        this.bind("click", actions["ContentroleMenuFormButton_DeleteOnClick"]);
+    });
+//End Event Binding
+
+//Plugin Calls @1-822FEEE1
+    $('*:ccsControl(Content, roleMenuForm, Button_Delete)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Content, roleMenuForm, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    roleMenuForm_DatePicker_valid_from1 = new Object(); 
+    roleMenuForm_DatePicker_valid_from1.format           = "dd-mmm-yyyy";
+    roleMenuForm_DatePicker_valid_from1.style            = "Styles/Chumanis/Style.css";
+    roleMenuForm_DatePicker_valid_from1.relativePathPart = "../";
+    roleMenuForm_DatePicker_valid_from1.themeVersion     = "3.0";
+    roleMenuForm_DatePicker_valid_from1.hasMasterPage    = true;
+    roleMenuForm_DatePicker_valid_from2 = new Object(); 
+    roleMenuForm_DatePicker_valid_from2.format           = "dd-mmm-yyyy";
+    roleMenuForm_DatePicker_valid_from2.style            = "Styles/Chumanis/Style.css";
+    roleMenuForm_DatePicker_valid_from2.relativePathPart = "../";
+    roleMenuForm_DatePicker_valid_from2.themeVersion     = "3.0";
+    roleMenuForm_DatePicker_valid_from2.hasMasterPage    = true;
+    roleMenuForm_DatePicker_valid_to1 = new Object(); 
+    roleMenuForm_DatePicker_valid_to1.format           = "dd-mmm-yyyy";
+    roleMenuForm_DatePicker_valid_to1.style            = "Styles/Chumanis/Style.css";
+    roleMenuForm_DatePicker_valid_to1.relativePathPart = "../";
+    roleMenuForm_DatePicker_valid_to1.themeVersion     = "3.0";
+    roleMenuForm_DatePicker_valid_to1.hasMasterPage    = true;
+//End Plugin Calls
+        $.fn.openModal =function(){
+        var url = '../lov/lov_dynamic2.php?';
+        var param = {
+                'table' :'p_role',
+                'label' :['ID','Role Name'],
+                'items' :['p_role_id','code'],
+                'whereClause' :'',
+                'searchParam' :['code'],
+                'order_param' :encodeURIComponent('order by p_role_id'),
+                'input' :{
+                         'ContentroleMenuFormp_role_id' : 'p_role_id',
+                     'ContentroleMenuFormrole_name' : 'code'
+                }
+        }
+        $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').html('');
+        $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').data('ccsUpdatePanel').currentUrl = url+jQuery.param(param);
+        $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').ccsUpdatePanel("refresh");
+        
+        return false;
+    }
+     $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').on('afterrefresh.ccsUpdatePanel',function(){
+        $('form','*:ccsControl(Content, LovContainer, LovAjaxPanel)').attr('action',$(this).data('ccsUpdatePanel').url);
+        $('#myModal').modal('show');
+     });
+
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+<title></title>
+<!-- END Panel Head -->
+<!-- BEGIN Panel Content -->
+<!-- BEGIN Record roleMenuForm -->
+<form id="ContentroleMenuForm" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td valign="top">
+        <div class="blockheader">
+          <h3 class="t">Group</h3>
+        </div>
+ 
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="ErrorBlock" class="Error">
+            <td colspan="2">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th">Nama Role</td> 
+            <td>
+              <!-- BEGIN TextBox role_name --><input type="text" id="ContentroleMenuFormrole_name" class="controlrq" maxlength="64" size="32" value="{role_name}" name="{role_name_Name}"><!-- END TextBox role_name --><button onclick="$.fn.openModal();" id="ContentNewRecord1Button1" class="fa fa-list btn btn-default btn-circle btn-semi-circle-lg"></button> &nbsp;&nbsp; <input type="hidden" id="ContentroleMenuFormp_role_menu_id" value="{p_role_menu_id}" name="{p_role_menu_id_Name}"><label style="display: none;" for="ContentAjaxPanelFormroleMenuFormTextBox3">&nbsp;</label><input type="hidden" id="ContentroleMenuFormp_menu_id" value="{p_menu_id}" name="{p_menu_id_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Tgl Berlaku</td> 
+            <td>&nbsp;<input type="text" id="ContentroleMenuFormvalid_from" value="{valid_from}" name="{valid_from_Name}">&nbsp; 
+              <!-- BEGIN DatePicker DatePicker_valid_from2 --><a href="javascript:showDatePicker('{Name}','{FormName}','{DateControl}');" id="ContentroleMenuFormDatePicker_valid_from2"><img id="ContentroleMenuFormDatePicker_valid_from2_Image" border="0" alt="Show Date Picker" src="{CCS_PathToMasterPage}/Images/DatePicker.png"></a><!-- END DatePicker DatePicker_valid_from2 -->&nbsp;&nbsp; 
+              <!-- BEGIN DatePicker DatePicker_valid_from1 --><a href="javascript:showDatePicker('{Name}','{FormName}','{DateControl}');" id="ContentroleMenuFormDatePicker_valid_from1"></a><!-- END DatePicker DatePicker_valid_from1 -->s/d&nbsp;<input type="text" id="ContentroleMenuFormvalid_to" value="{valid_to}" name="{valid_to_Name}">&nbsp; 
+              <!-- BEGIN DatePicker DatePicker_valid_to1 --><a href="javascript:showDatePicker('{Name}','{FormName}','{DateControl}');" id="ContentroleMenuFormDatePicker_valid_to1"><img id="ContentroleMenuFormDatePicker_valid_to1_Image" border="0" alt="Show Date Picker" src="{CCS_PathToMasterPage}/Images/DatePicker.png"></a><!-- END DatePicker DatePicker_valid_to1 -->
+              <!-- BEGIN DatePicker DatePicker_Dialog11 --><a href="javascript:showDatePicker('{Name}','{FormName}','{DateControl}');" id="ContentAjaxPanelFormroleMenuFormDatePicker_Dialog11"></a><!-- END DatePicker DatePicker_Dialog11 --></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Aktif ?</td> 
+            <td>
+              <select id="ContentroleMenuFormis_active" name="{is_active_Name}">
+                {is_active_Options}
+              </select>
+ </td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Deskripsi</td> 
+            <td><textarea id="ContentroleMenuFormdescription" rows="3" cols="60" name="{description_Name}">{description}</textarea></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Pembuat</td> 
+            <td><input type="text" id="ContentroleMenuFormcreated_by" class="controlro" readonly maxlength="32" size="15" value="{created_by}" name="{created_by_Name}">&nbsp; 
+              <!-- BEGIN TextBox creation_date --><input type="text" id="ContentroleMenuFormcreation_date" class="controlro" readonly maxlength="100" size="12" value="{creation_date}" name="{creation_date_Name}"><!-- END TextBox creation_date --></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Pengubah</td> 
+            <td><input type="text" id="ContentroleMenuFormupdated_by" class="controlro" readonly maxlength="32" size="15" value="{updated_by}" name="{updated_by_Name}">
+              <!-- BEGIN TextBox updated_date --><input type="text" id="ContentroleMenuFormupdated_date" class="controlro" readonly maxlength="100" size="12" value="{updated_date}" name="{updated_date_Name}"><!-- END TextBox updated_date --></td>
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="2"><input type="hidden" id="ContentroleMenuFormp_role_id" value="{p_role_id}" name="{p_role_id_Name}">
+              <!-- BEGIN Button Button_Insert --><input type="submit" id="ContentroleMenuFormButton_Insert" class="Button" alt="Save" value="Simpan" name="{Button_Name}"><!-- END Button Button_Insert -->
+              <!-- BEGIN Button Button_Update --><input type="submit" id="ContentroleMenuFormButton_Update" class="Button" alt="Save" value="Simpan" name="{Button_Name}"><!-- END Button Button_Update -->
+              <!-- BEGIN Button Button_Delete --><input type="submit" id="ContentroleMenuFormButton_Delete" class="Button" alt="Delete" value="Hapus" name="{Button_Name}"><!-- END Button Button_Delete -->
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="ContentroleMenuFormButton_Cancel" class="Button" alt="Cancel" value="Batal" name="{Button_Name}"><!-- END Button Button_Cancel --></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record roleMenuForm -->&nbsp; 
+<!-- BEGIN Panel LovContainer -->
+<p>{modal_start}</p>
+<!-- BEGIN Panel LovAjaxPanel --><!-- END Panel LovAjaxPanel -->
+<p></p>
+{modal_end}<!-- END Panel LovContainer --><!-- END Panel Content -->

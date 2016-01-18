@@ -1,0 +1,234 @@
+
+<!-- BEGIN Panel Head -->
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/sb-admin-2.css">
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../Styles/custom.css">
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-7B25F6B0
+</script>
+<script src="{page:pathToRoot}ClientI18N.php?file=Functions.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script src="{page:pathToRoot}ClientI18N.php?file=DatePicker.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script src="{page:pathToRoot}ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-A87AC9EE
+</script>
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+</script>
+<script src="../bootstrap/js/bootstrap.min.js"> </script>
+<script type="text/javascript">
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//Controls Selecting @1-0258E8DC
+    $('body').ccsBind(function() {
+        features["ContentLovContainerLovAjaxPanelJUpdatePanel1"] = $('*:ccsControl(Content, LovContainer, LovAjaxPanel)');
+    });
+//End Controls Selecting
+
+//Feature Parameters @1-4CDF64F8
+    params["ContentLovContainerLovAjaxPanelJUpdatePanel1"] = {
+        name: "ContentLovContainerLovAjaxPanel"
+    };
+//End Feature Parameters
+
+//Feature Init @1-14A52C7D
+    features["ContentLovContainerLovAjaxPanelJUpdatePanel1"].ccsBind(function() {
+        this.ccsUpdatePanel(params["ContentLovContainerLovAjaxPanelJUpdatePanel1"]);
+    });
+//End Feature Init
+
+//ContentroleFormButton_DeleteOnClick Event Start @-9842BBB8
+    actions["ContentroleFormButton_DeleteOnClick"] = function (eventType, parameters) {
+        var result = true;
+//End ContentroleFormButton_DeleteOnClick Event Start
+
+//Confirmation Message @8-8243B274
+        return confirm('Delete record?');
+//End Confirmation Message
+
+//ContentroleFormButton_DeleteOnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End ContentroleFormButton_DeleteOnClick Event End
+
+//Event Binding @1-09B79845
+    $('*:ccsControl(Content, roleForm, Button_Delete)').ccsBind(function() {
+        this.bind("click", actions["ContentroleFormButton_DeleteOnClick"]);
+    });
+//End Event Binding
+
+//Plugin Calls @1-BC924877
+    $('*:ccsControl(Content, roleForm, Button_Delete)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Content, roleForm, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    roleForm_DatePicker_valid_from1 = new Object(); 
+    roleForm_DatePicker_valid_from1.format           = "dd-mmm-yyyy";
+    roleForm_DatePicker_valid_from1.style            = "Styles/Chumanis/Style.css";
+    roleForm_DatePicker_valid_from1.relativePathPart = "../";
+    roleForm_DatePicker_valid_from1.themeVersion     = "3.0";
+    roleForm_DatePicker_valid_from1.hasMasterPage    = true;
+    roleForm_DatePicker_valid_to1 = new Object(); 
+    roleForm_DatePicker_valid_to1.format           = "dd-mmm-yyyy";
+    roleForm_DatePicker_valid_to1.style            = "Styles/Chumanis/Style.css";
+    roleForm_DatePicker_valid_to1.relativePathPart = "../";
+    roleForm_DatePicker_valid_to1.themeVersion     = "3.0";
+    roleForm_DatePicker_valid_to1.hasMasterPage    = true;
+//End Plugin Calls
+        
+        $.fn.openModal =function(){
+        var url = '../lov/lov_dynamic2.php?';
+        var param = {
+                'table' :'p_user_attribute_type',
+                'label' :['ID','Attribut Type'],
+                'items' :['p_user_attribute_type_id','code'],
+                'whereClause' :'',
+                'searchParam' :['code'],
+                'order_param' :encodeURIComponent('order by p_user_attribute_type_id'),
+                'input' :{
+                         'ContentroleFormp_user_attribute_type_id' : 'p_user_attribute_type_id',
+                     'ContentroleFormattribut_type' : 'code'
+                }
+        }
+        $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').html('');
+        $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').data('ccsUpdatePanel').currentUrl = url+jQuery.param(param);
+        $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').ccsUpdatePanel("refresh");
+        
+        return false;
+    }
+    
+     $.fn.openModalAttributList =function(){
+     
+       
+        var url = '../lov/lov_dynamic2.php?';
+        var param = {
+                'table' :'p_user_attribute_list',
+                'label' :['ID','Kode Attribut'],
+                'items' :['p_user_attribute_list_id','code'],
+                'whereClause' :' p_user_attribute_type_id = ' + $('#ContentroleFormp_user_attribute_type_id').val(),
+                'searchParam' :['code'],
+                'order_param' :encodeURIComponent('order by p_user_attribute_list_id'),
+                'input' :{
+                         'ContentroleFormp_user_attribute_list_id' : 'p_user_attribute_list_id',
+                     'ContentroleFormattribut_list_code' : 'code'
+                }
+        }
+        $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').html('');
+        $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').data('ccsUpdatePanel').currentUrl = url+jQuery.param(param);
+        $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').ccsUpdatePanel("refresh");
+        
+        return false;
+    }
+    
+    
+     $('*:ccsControl(Content, LovContainer, LovAjaxPanel)').on('afterrefresh.ccsUpdatePanel',function(){
+        $('form','*:ccsControl(Content, LovContainer, LovAjaxPanel)').attr('action',$(this).data('ccsUpdatePanel').url);
+        $('#myModal').modal('show');
+     });
+     
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+<title></title>
+<!-- END Panel Head -->
+<!-- BEGIN Panel Content -->
+<!-- BEGIN Record roleForm -->
+<form id="ContentroleForm" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td valign="top">
+        <div class="blockheader">
+          <h3 class="t">User Attribut&nbsp;Form</h3>
+ 
+        </div>
+ 
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="ErrorBlock" class="Error">
+            <td colspan="2">{Error}</td> 
+          </tr>
+ <!-- END Error -->
+          <tr class="Controls">
+            <td class="th">User</td> 
+            <td><input type="text" id="ContentroleFormuser_name" class="controlro" readonly maxlength="32" size="15" value="{user_name}" name="{user_name_Name}"><input type="hidden" id="ContentroleFormp_user_id" value="{p_user_id}" name="{p_user_id_Name}"></td> 
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Jenis Attribut</td> 
+            <td><input type="text" id="ContentroleFormattribut_type" class="controlrq" maxlength="64" size="32" value="{attribut_type}" name="{attribut_type_Name}"><button type="button" onclick="$.fn.openModal();" id="ContentNewRecord1Button1" class="fa fa-list btn btn-default btn-circle btn-semi-circle-lg"></button><input type="hidden" id="ContentroleFormp_user_attribute_type_id" value="{p_user_attribute_type_id}" name="{p_user_attribute_type_id_Name}"></td> 
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Pilih Nilai Attribut Sesuai Jenis </td> 
+            <td><input type="text" id="ContentroleFormattribut_list_code" class="controlrq" maxlength="64" size="32" value="{attribut_list_code}" name="{attribut_list_code_Name}"><button type="button" onclick="$.fn.openModalAttributList();" id="ContentNewRecord1Button1" class="fa fa-list btn btn-default btn-circle btn-semi-circle-lg"></button><input type="hidden" id="ContentroleFormp_user_attribute_list_id" value="{p_user_attribute_list_id}" name="{p_user_attribute_list_id_Name}"></td> 
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Nilai Attribut User (Ketikkan Bebas) </td> 
+            <td><input type="text" id="ContentroleFormuser_attribute_value" class="controlrq" maxlength="64" size="32" value="{user_attribute_value}" name="{user_attribute_value_Name}"></td> 
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Awal Berlaku</td> 
+            <td><input type="text" id="ContentroleFormvalid_from" class="controlrq" maxlength="64" size="12" value="{valid_from}" name="{valid_from_Name}">
+              <!-- BEGIN DatePicker DatePicker_valid_from1 --><a href="javascript:showDatePicker('{Name}','{FormName}','{DateControl}');" id="ContentroleFormDatePicker_valid_from1"><img id="ContentroleFormDatePicker_valid_from1_Image" border="0" alt="Show Date Picker" src="{CCS_PathToMasterPage}/Images/DatePicker.png"></a><!-- END DatePicker DatePicker_valid_from1 --></td> 
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Akhir Berlaku</td> 
+            <td><input type="text" id="ContentroleFormvalid_to" maxlength="64" size="12" value="{valid_to}" name="{valid_to_Name}">
+              <!-- BEGIN DatePicker DatePicker_valid_to1 --><a href="javascript:showDatePicker('{Name}','{FormName}','{DateControl}');" id="ContentroleFormDatePicker_valid_to1"><img id="ContentroleFormDatePicker_valid_to1_Image" border="0" alt="Show Date Picker" src="{CCS_PathToMasterPage}/Images/DatePicker.png"></a><!-- END DatePicker DatePicker_valid_to1 --></td> 
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Catatan</td> 
+            <td><label style="display: none;" for="ContentroleFormdescription">&nbsp;</label> <textarea id="ContentroleFormdescription" style="HEIGHT: 54px; WIDTH: 301px" rows="1" cols="1" name="{description_Name}">{description}</textarea></td> 
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Pembuat</td> 
+            <td><input type="text" id="ContentroleFormcreated_by" class="controlro" readonly maxlength="32" size="15" value="{created_by}" name="{created_by_Name}">
+              <!-- BEGIN TextBox creation_date --><input type="text" id="ContentroleFormcreation_date" class="controlro" readonly maxlength="100" size="12" value="{creation_date}" name="{creation_date_Name}"><!-- END TextBox creation_date --></td> 
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Pengubah</td> 
+            <td><input type="text" id="ContentroleFormupdated_by" class="controlro" readonly maxlength="32" size="15" value="{updated_by}" name="{updated_by_Name}">
+              <!-- BEGIN TextBox updated_date --><input type="text" id="ContentroleFormupdated_date" class="controlro" readonly maxlength="100" size="12" value="{updated_date}" name="{updated_date_Name}"><!-- END TextBox updated_date --></td> 
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="2"><input type="hidden" id="ContentroleFormp_user_attribut_id" value="{p_user_attribut_id}" name="{p_user_attribut_id_Name}">
+              <!-- BEGIN Button Button_Insert --><input type="submit" id="ContentroleFormButton_Insert" class="Button" alt="Save" value="Simpan" name="{Button_Name}"><!-- END Button Button_Insert -->
+              <!-- BEGIN Button Button_Update --><input type="submit" id="ContentroleFormButton_Update" class="Button" alt="Save" value="Simpan" name="{Button_Name}"><!-- END Button Button_Update -->
+              <!-- BEGIN Button Button_Delete --><input type="submit" id="ContentroleFormButton_Delete" class="Button" alt="Delete" value="Hapus" name="{Button_Name}"><!-- END Button Button_Delete -->
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="ContentroleFormButton_Cancel" class="Button" alt="Cancel" value="Batal" name="{Button_Name}"><!-- END Button Button_Cancel --></td> 
+          </tr>
+ 
+        </table>
+ </td> 
+    </tr>
+ 
+  </table>
+</form>
+<!-- END Record roleForm -->&nbsp; 
+<!-- BEGIN Panel LovContainer -->
+<p>{modal_start}</p>
+<!-- BEGIN Panel LovAjaxPanel --><!-- END Panel LovAjaxPanel -->
+<p></p>
+{modal_end}<!-- END Panel LovContainer --><!-- END Panel Content -->
